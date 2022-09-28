@@ -233,8 +233,8 @@ function App() {
       case 1:
         if (input.b1 === '1') {
           changePhase(true)
-          const shiftArray = isRandomArray.shift();
-          console.log(shiftArray)
+          const shiftArray = isRandomArray;
+          shiftArray.shift()
           setRandomArray(shiftArray)
         }
         else { changePhase(false) }
@@ -242,35 +242,36 @@ function App() {
       case 2:
         if (input.b2 === '마') {
           changePhase(true)
-          const shiftArray = isRandomArray.shift();
-          console.log(shiftArray)
+          const shiftArray = isRandomArray;
+          shiftArray.shift()
           setRandomArray(shiftArray)
         }
         else { changePhase(false) }
         break;
       case 3:
         if (input.b3 === '당') {
-          const shiftArray = isRandomArray.shift();
-          setRandomArray(shiftArray)
-          console.log(shiftArray)
           changePhase(true)
+          const shiftArray = isRandomArray;
+          shiftArray.shift()
+          setRandomArray(shiftArray)
         }
         else { changePhase(false) }
         break;
       case 4:
         if (input.b4 === '대전광역시 유성구 봉명동 1012-3') {
-          const shiftArray = isRandomArray.shift();
-          setRandomArray(shiftArray)
-          console.log(shiftArray)
           changePhase(true)
+          const shiftArray = isRandomArray;
+          shiftArray.shift()
+          setRandomArray(shiftArray)
         }
         else { changePhase(false) }
         break;
       case 5:
         if (input.b5 === '나비') {
-          const shiftArray = isRandomArray.shift();
-          setRandomArray(shiftArray)
           changePhase(true)
+          const shiftArray = isRandomArray;
+          shiftArray.shift()
+          setRandomArray(shiftArray)
         }
         else { changePhase(false) }
         break;
@@ -479,7 +480,7 @@ function App() {
                       <div style={{ color: 'blue' }}>타깃 데이터 :§ìÆ </div>
                       <div> ㄱ : µ  ㅓ : ö  </div>
                       <div> ㄴ : ê  ㅗ : ñ  </div>
-                      <div> ㅅ : È²  - : °¢   </div>
+                      <div> ㅅ : È² ㅡ : °¢   </div>
                       <div> ㅇ : Æ  ㅣ : °ø </div>
                       <div className='fillUpText'>☐µ°¢ê</div>
                       <div className='fillUpText'>☐구</div>
@@ -1099,7 +1100,28 @@ function App() {
                    </div>
                  </>
                    :
-                      ''
+                      phase === 7 ?
+                      <>
+                      <div className='secondPage'>
+                        <div className='backPage_grid_1-1'>
+                          <div className='mainTitle2' />
+                        </div>
+                        <div className='backPage_grid_4'>
+                        <div>
+                            CONORDEL_CONSOL(ADMIN) : <br />
+                            Last Login - 2105 Mar 05 15:26:25 on console<br />
+                            Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
+   
+                            <div style={{ color: "green" }}>Protocol AD332 Initiated.</div>
+                            <div style={{ color: "blue" }}>Checking Location, Data gathering Required.</div>
+                            <div style={{ color: "blue" }}>First Location found. Collecting Procedure {'['}3/5{']'}</div>
+   
+                            <div>{">"} 세번째 미션이 지정되었습니다.</div>
+                       
+                          </div>
+                        </div>
+                      </div>
+                    </>:''
 
       }
     </div>
