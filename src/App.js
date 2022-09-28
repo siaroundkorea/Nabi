@@ -472,12 +472,11 @@ function App() {
                     <div className='body-contentbox'>
                       <div>데이터 ID : #{isIDNumber} - 19(DF3047)</div>
                       <div>정보 분석 : 완료됨</div>
-                      <div>손상된 문자열 : </div>
                       <div>정보 손상율 : 26 % </div>
                       <br />
                       <div>데이터 손상으로 인해 정보가 손상됨.</div>
                       <div>손상된 문자열을 비교한 후 다섯개의 네모칸에 들어갈 동일한 한 글자를 입력.</div>
-                      <div style={{ color: 'blue' }}>타깃 데이터 :»ìÆ </div>
+                      <div style={{ color: 'blue' }}>타깃 데이터 :§ìÆ </div>
                       <div> ㄱ : µ  ㅓ : ö  </div>
                       <div> ㄴ : ê  ㅗ : ñ  </div>
                       <div> ㅅ : È²  - : °¢   </div>
@@ -563,6 +562,71 @@ function App() {
                 <div className='popup-foot'>
                   <div className='pop-btnContainer'>
                     <div className='pop-btn' onClick={() => { checkAnswer(4) }}>
+                      확인
+                    </div>
+                  </div>
+                  <div className='pop-btnContainer'>
+                    <div className='pop-btn' onClick={() => popupSwitch(false)}>
+                      취소
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Popup>
+          case 5: 
+           return isPopupError ? <Popup open={isPopup} modal nested>
+          <div className='popup-wrap'>
+            <div className='popup'>
+              <div></div>
+              <div className='popup-head'>
+                <div className='popup-headtext'>오 류</div>
+                <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+              </div>
+              <div className='popup-body'>
+                <div className='body-content'>
+                  <div className='body-titlebox'> Error Code 0040 : 데이터 존재하지 않음</div>
+                  <div className='body-contentbox'>
+                    <div>올바르지 않은 입력값입니다.</div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div>입력 정보 : {input.b5}</div>
+                  </div>
+                </div>
+              </div>
+              <div className='popup-foot'>
+                <div className='warning-container'>
+                  <div className='pop-btn' onClick={() => setpopupError(false)}>
+                    확 인
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Popup> :
+          <Popup open={isPopup} modal nested>
+            <div className='popup-wrap'>
+              <div className='popup'>
+                <div></div>
+                <div className='popup-head'>
+                  <div className='popup-headtext'>알림</div>
+                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                </div>
+                <div className='popup-body'>
+                  <div className='body-content'>
+                    <div className='body-titlebox'> 정보가 존재하지 않습니다.</div>
+                    <div className='body-contentbox'>
+                  
+
+                    </div>
+                    <input className='input_div2' type="text" id="b5" value={input.b5} onChange={handleText} />
+                  </div>
+                </div>
+                <div className='popup-foot'>
+                  <div className='pop-btnContainer'>
+                    <div className='pop-btn' onClick={() => { checkAnswer(5) }}>
                       확인
                     </div>
                   </div>
@@ -824,8 +888,8 @@ function App() {
                                       <div>▸ 2053년, 네오코스모스의 전세계 동시접속자 1000만명 돌파</div>
                                       <div>▸ 2055년, 신미합중국 정부가 게임에서 활용된 인공지능 기술, 뇌신경 기술, 가상세계 구현 기술을 다양한 방면에 활용하기 위해서 협력을 요청함.</div>
                                       <div>▸ 2060년, 인공지능 A.I 'Libera' 개발.</div>
-                                      <div style={{ color: "red" }}>▸ 2070년, [1급 기밀] 신미합중국과 CONORDEL의 통합연구팀에서 데이터 정보를 미래 혹은 과거로 보낼 수 있는 기술이 발견됨. 이를 I.T.T.(Information Transferring TimeBelt)라고 명함.</div>
-                                      <div style={{ color: "red" }}>▸ 2077년, [1급 기밀] I.T.T.를 활용하여 사람의 뇌에 있는 모든 정보도 과거나 미래의 사람에게 보낼 수 있다는 것이 발견됨.</div>
+                                      <div>▸ 2070년, <span style={{ color: "red" }}>[1급 기밀] 신미합중국과 CONORDEL의 통합연구팀에서 데이터 정보를 미래 혹은 과거로 보낼 수 있는 기술이 발견됨. 이를 I.T.T.(Information Transferring TimeBelt)라고 명함.</span></div>
+                                      <div>▸ 2077년,  <span style={{ color: "red" }}>[1급 기밀] I.T.T.를 활용하여 사람의 뇌에 있는 모든 정보도 과거나 미래의 사람에게 보낼 수 있다는 것이 발견됨.</span></div>
                                     </div>
                                   </div>
                                 </div>
@@ -896,7 +960,7 @@ function App() {
                             <div style={{ color: "blue" }}>Checking Location, Data gathering Required.</div>
                             <div style={{ color: "blue" }}>First Location found. Collecting Procedure {'['}1/5{']'}</div>
                             <div className='typing-text5'>{">"} 두번째 미션이 지정되었습니다.</div>
-                            <div className='typing-textMission3'>{">"} <button className='console-btn2' onClick={() => popupSwitch(true)}> 미션 확인 </button></div>
+                            <div className='typing-textMission4'>{">"} <button className='console-btn2' onClick={() => popupSwitch(true)}> 미션 확인 </button></div>
                             {popup()}
                           </div>
                         </div>
@@ -925,7 +989,7 @@ function App() {
                           {isDialogue2 === '' ? <div>
                           <div className='typing-text3'>{">"} 어렵진 않지? 다행이야.</div>
                           <div className='typing-text5'>{">"} 5개 중에 2개를 끝냈네. 좋아. 그렇게만 하면 돼.</div>
-                          <div className='typing-text7'>{">"} 다음 미션이 업데이트 될 때까지 시간이 남네.</div>
+                          <div className='typing-text7'>{">"} 다음 미션이 업데이트 될 때까지 시간이 남는데</div>
                           <div className='typing-text9'>{">"} 뭐 물어보고 싶은 거 있어?</div>
                             <div className='typing-text11'>==============================================================================================================</div>
                             <div className='choiceButton2'> 
