@@ -388,6 +388,7 @@
     margin: 3px 0;
     animation-delay: 7s;
     animation-fill-mode: backwards;
+    display:flex;
     color:blue;
   }
   .typing-textMission4{

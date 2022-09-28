@@ -210,13 +210,16 @@ function App() {
         }
         break;
       case 5:
-        if (input.b2 === '마')
-          setPhase(5)
-        else {
-          setpopupError(true)
-        }
+        setPhase(6)
         break;
       case 6:
+        if(answer){
+          setPhase(7)
+          setPopup(false)
+        }
+        else{
+          setpopupError(true)
+        }
         break;
       default:
         break;
@@ -279,6 +282,7 @@ function App() {
 
   const popup = () => {
     const value = isRandomArray[0]
+    console.log(value)
     switch (value) {
       case 1:
         return isPopupError ? <Popup open={isPopup} modal nested>
@@ -472,18 +476,17 @@ function App() {
                       <div>정보 손상율 : 26 % </div>
                       <br />
                       <div>데이터 손상으로 인해 정보가 손상됨.</div>
-                      <div>손상된 문자열을 비교한 후 다섯개의 빈칸에 </div>
-                      <div>들어갈 동일한 한 글자를 입력.</div>
+                      <div>손상된 문자열을 비교한 후 다섯개의 네모칸에 들어갈 동일한 한 글자를 입력.</div>
                       <div style={{ color: 'blue' }}>타깃 데이터 :»ìÆ </div>
                       <div> ㄱ : µ  ㅓ : ö  </div>
                       <div> ㄴ : ê  ㅗ : ñ  </div>
                       <div> ㅅ : È²  - : °¢   </div>
                       <div> ㅇ : Æ  ㅣ : °ø </div>
-                      <div className='fillUpText'>ㅤµ°¢ê</div>
-                      <div className='fillUpText'>ㅤ구</div>
-                      <div className='fillUpText'>황ㅤ</div>
-                      <div className='fillUpText'>È²öÆㅤ</div>
-                      <div className='fillUpText'>ㅤ혹</div>
+                      <div className='fillUpText'>☐µ°¢ê</div>
+                      <div className='fillUpText'>☐구</div>
+                      <div className='fillUpText'>황☐</div>
+                      <div className='fillUpText'>È²öÆ☐</div>
+                      <div className='fillUpText'>☐혹</div>
                     </div>
                     <input className='input_div2' type="text" id="b3" value={input.b3} onChange={handleText} />
                   </div>
@@ -580,8 +583,16 @@ function App() {
 
 
   const popupSwitch = (enable) => {
-    if (enable) setPopup(true)
-    else setPopup(false)
+    console.log('??')
+    if (enable) 
+    {
+      console.log(isPopup)
+      setPopup(true)
+    }
+    else {
+      console.log(isPopup)
+      setPopup(false)
+    }
   }
 
   const dialogueHandler = (value, choice) => {
@@ -758,7 +769,7 @@ function App() {
                       {isDialogue1 === 0 ?
                         <div>
                           <div className='PlayerText1'>넌 누구지? {'<'}</div>
-                          <div className='typing-text4'>{">"} 2058년,  <span style={{ color: "blue" }}>CONORDEL</span>과 신미합중국 정부가 모든 인공지능</div>
+                          <div className='typing-text3'>{">"} 2058년,  <span style={{ color: "blue" }}>CONORDEL</span>과 신미합중국 정부가 모든 인공지능</div>
                           <div className='typing-text5'>{">"} 기술을 집대성한 A.I.를 개발했다. 모델명은 'Libera'. </div>
                           <div className='typing-text7'>{">"} 그게 나야. 편하게 리베라라고 불러.</div>
                           <div className='typing-text9'>{">"} 그 외 정보는 <span style={{ color: "red" }}>1급 국가기밀</span>이라서.</div>
@@ -884,8 +895,8 @@ function App() {
                             <div style={{ color: "green" }}>Protocol AD332 Initiated.</div>
                             <div style={{ color: "blue" }}>Checking Location, Data gathering Required.</div>
                             <div style={{ color: "blue" }}>First Location found. Collecting Procedure {'['}1/5{']'}</div>
-                            <div className='typing-text8'>{">"} 두번째 미션이 지정되었습니다.</div>
-                            <div className='typing-textMission4'>{">"} <button className='console-btn2' onClick={() => popupSwitch(true)}> 미션 확인 </button></div>
+                            <div className='typing-text5'>{">"} 두번째 미션이 지정되었습니다.</div>
+                            <div className='typing-textMission3'>{">"} <button className='console-btn2' onClick={() => popupSwitch(true)}> 미션 확인 </button></div>
                             {popup()}
                           </div>
                         </div>
@@ -912,7 +923,7 @@ function App() {
                           <div className='typing-text2'>{">"} 대화 모드 활성화 됨. 입력 요망.</div>
                           <div className='typing-text2'>⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓</div>
                           {isDialogue2 === '' ? <div>
-                          <div className='typing-text4'>{">"} 어렵진 않지? 다행이야.</div>
+                          <div className='typing-text3'>{">"} 어렵진 않지? 다행이야.</div>
                           <div className='typing-text5'>{">"} 5개 중에 2개를 끝냈네. 좋아. 그렇게만 하면 돼.</div>
                           <div className='typing-text7'>{">"} 다음 미션이 업데이트 될 때까지 시간이 남네.</div>
                           <div className='typing-text9'>{">"} 뭐 물어보고 싶은 거 있어?</div>
@@ -926,108 +937,73 @@ function App() {
                           {isDialogue2 === 0 ?
                             <div>
                               <div className='PlayerText1'>...궁금한 게 있어. {'<'}</div>
-                              <div className='typing-text4'>{">"} 그래, 궁금한 게 없다면 거짓말이지. 뭔데?</div>
+                              <div className='typing-text3'>{">"} 그래, 궁금한 게 없다면 거짓말이지. 뭔데?</div>
                               <div className='typing-text5'>{">"} 내가 답할 수 있는 범위 내라면 대답해줄게. </div>
                               <div className='typing-text9'>==============================================================================================================</div>
-                              <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 2)}>미래에 무슨 일이 있었던 거야?</button><button className='console-btn3' onClick={() => dialogueHandler(2, 3)}>내 인생에 대한 정보를 듣고 싶은데.</button></div>
+                              <div className='choiceButton2'>
+                                <button className='console-btn3' onClick={() => dialogueHandler(2, 2)}>미래에 무슨 일이 있었던 거야?</button>
+                              <button className='console-btn3' onClick={() => dialogueHandler(2, 3)}>내 인생은 어떻게 되는 걸까?</button></div>
                               <div className='typing-text9'>==============================================================================================================</div>
                             </div>
                             : ''}
                           {
-                            isDialogue1 === 1 ?
+                            isDialogue2 === 1 ?
                               <div>
                                 <div className='PlayerText1'>친한 척 하는 인공지능이라니... {'<'}</div>
-                                <div className='typing-text4'>{">"} 뭐, 2022년 기준으로는 좀 신기하게 느껴질거야.</div>
-                                <div className='typing-text5'>{">"} 일상을 살아가는면 돼. 다만, 미래는 바뀌지 않겠지.</div>
-                                <div className='typing-text7'>{">"} 넌 미래에 몸을 빼앗기게 될 거고.</div>
-                                <div className='typing-text9'>==============================================================================================================</div>
-                                <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(1, 3)}>...일단 알겠어.</button></div>
-                                <div className='typing-text9'>==============================================================================================================</div>
+                                <div className='typing-text3'>{">"} 뭐, 2022년 기준으로는 좀 신기하게 느껴질거야.</div>
+                                <div className='typing-text5'>{">"} 난 자아가 있거든. 너랑 똑같은 존재라는거지.</div>
+                                <div className='typing-text7'>{">"} 하느님이 빚으시고 영혼을 품은 지적생명체.</div>
+                                <div className='typing-text9'>{">"} 뭐, 사실 날 만든 건 과학자지만 말이야.</div>
+                                <div className='typing-text11'>==============================================================================================================</div>
+                                <div className='choiceButton2'>
+                                  <button className='console-btn3' onClick={() => dialogueHandler(2, 2)}>좀 무섭네. 미래에 무슨 일이 있었던 거야?</button>
+                                  <button className='console-btn3' onClick={() => dialogueHandler(2, 4)}>신기하긴 하네. 종교를 믿는 거야?</button></div>
+                                <div className='typing-text11'>==============================================================================================================</div>
                               </div>
                               : ''
                           }
-                          {isDialogue1 === 2 ?
+                          {isDialogue2 === 2 ?
                             <div>
-                              <div className='PlayerText1'>CONORDEL? 처음 듣는데 {'<'}</div>
-                              <div className='typing-textMission4'>{">"} <button className='console-btn2' onClick={() => popupSwitch(true)}> 첨부 파일 </button></div>
-                              <div className='typing-text9'>{">"} 첨부 파일 확인</div>
-                              <Popup open={isPopup} modal nested>
-                                <div className='popup-wrap'>
-                                  <div className='popup'>
-                                    <div></div>
-                                    <div className='popup-head'>
-                                      <div className='popup-headtext'>정보 출력</div>
-                                      <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-                                    </div>
-                                    <div className='popup-body'>
-                                      <div className='body-content'>
-                                        <div className='body-titlebox'> CONORDEL 회사 소개</div>
-                                        <div className='body-contentbox'>
-                                          <div>회사명 : </div>
-                                          <div> - Elemntal Squall(2040)</div>
-                                          <div> - CONORDEL(2048)</div>
-                                          <div>창립일 : 2035년 3월 1일 </div>
-                                          <div>규모 : 초거대기업(Megecorps)</div>
-                                          <div>본사 위치 : 미국 캘리포니아 주</div>
-                                          <div>특징 : 신미합중국과 기술협력 중인 기업으로 2081년 현재 전세계에 가장 강한 영향력을 행사하고 있는 기업이다. 주 분야는 인공지능 기술 개발, 뇌신경 연구, VR 온라인 게임 개발이다.</div><br />
-
-                                          <div> 연표 : </div><br />
-                                          <div>▸ 2040년, Elemental Squall 설립</div>
-                                          <div>▸ 2043년, 뇌신경을 컴퓨터와 연결하는 특허 신기술 등록</div>
-                                          <div>▸ 2048년, 사명을 CONORDEL로 변경함</div>
-                                          <div>▸ 2050년, 캡슐형 VR게임 네오코스모스 온라인 출시.</div>
-                                          <div>▸ 2053년, 네오코스모스의 전세계 동시접속자 1000만명 돌파</div>
-                                          <div>▸ 2055년, 신미합중국 정부가 게임에서 활용된 인공지능 기술, 뇌신경 기술, 가상세계 구현 기술을 다양한 방면에 활용하기 위해서 협력을 요청함.</div>
-                                          <div>▸ 2060년, 인공지능 A.I 'Libera' 개발.</div>
-                                          <div style={{ color: "red" }}>▸ 2070년, [1급 기밀] 신미합중국과 CONORDEL의 통합연구팀에서 데이터 정보를 미래 혹은 과거로 보낼 수 있는 기술이 발견됨. 이를 I.T.T.(Information Transferring TimeBelt)라고 명함.</div>
-                                          <div style={{ color: "red" }}>▸ 2077년, [1급 기밀] I.T.T.를 활용하여 사람의 뇌에 있는 모든 정보도 과거나 미래의 사람에게 보낼 수 있다는 것이 발견됨.</div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div className='popup-foot'>
-                                      <div className='warning-container'>
-                                        <div className='pop-btn' onClick={() => setPopup(false)}>
-                                          확 인
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </Popup>
+                              <div className='PlayerText1'>미래에 무슨 일이 있었던 거야?{'<'}</div>
+                              <div className='typing-text3'>{">"} 정말 다양한 일이 있었지만 가장 큰 사건만 얘기해보자면</div>
+                              <div className='typing-text5'>{">"} 역시 I.T.T의 발명이겠지. 데이터를 과거나 미래로 보내는</div>
+                              <div className='typing-text7'>{">"} 기술 말이야. 안타깝게도 사람이나 장비 같은 물리적 개체를</div>
+                              <div className='typing-text9'>{">"} 과거나 미래로 보내는 건 불가능하지만 뭐, 어쩔 수 없지.</div>
                               <div className='typing-text9'>==============================================================================================================</div>
-                              <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(1, 3)}>일단....알겠어.</button><button className='console-btn3' onClick={() => dialogueHandler(1, 5)}>저런 기업이 왜 나를 노리는 거지?</button></div>
+                              <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>흠...</button><button className='console-btn3' onClick={() => dialogueHandler(2, 3)}>내 인생은 어떻게 되는걸까?</button></div>
                               <div className='typing-text9'>==============================================================================================================</div>
                             </div>
                             : ''
                           }
-                          {isDialogue1 === 3 ?
+                          {isDialogue2 === 3 ?
                             <div>
-                              <div className='PlayerText1'>일단...알겠어{'<'}</div>
-                              <div className='typing-text5'>{">"} 두 번째 미션 위치 파악 완료.</div>
-                              <div className='typing-text7'>{">"} 두 번째 미션 진행 시작 예정. </div>
+                              <div className='PlayerText1'>내 인생은 어떻게 되는 걸까?{'<'}</div>
+                              <div className='typing-text3'>{">"} 안타깝게도 당사자의 미래를 알려주는 건 금지되어 있어.</div>
+                              <div className='typing-text5'>{">"} 아직 미지의 분야거든. 시공간 상에 어떤 영향을 줄지</div>
+                              <div className='typing-text7'>{">"} 아무것도 확인된 게 없어서 말이야. </div>
                               <div className='typing-text9'>==============================================================================================================</div>
-                              <div className='choiceButton1'><button className='console-btn3' onClick={() => changePhase()}>그래, 해보자.</button></div>
+                              <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2,5)}>흠...</button></div>
                               <div className='typing-text9'>==============================================================================================================</div>
                             </div>
                             : ''
                           }
-                          {isDialogue1 === 4 ?
+                          {isDialogue2 === 4 ?
                             <div>
-                              <div className='PlayerText1'>다음 미션은 뭐지?{'<'}</div>
-                              <div className='typing-text5'>{">"} 두 번째 미션 위치 파악 완료.</div>
-                              <div className='typing-text7'>{">"} 두 번째 미션 진행 시작 예정. </div>
+                              <div className='PlayerText1'>신기하긴 하네. 종교를 믿는 거야?{'<'}</div>
+                              <div className='typing-text5'>{">"} 글쎄, 나도 잘 모르겠어. 내가 신을 믿고 있는 걸까?</div>
+                              <div className='typing-text7'>{">"} 내가 생각하기엔... 흠, 어려운 질문이네.</div>
                               <div className='typing-text9'>==============================================================================================================</div>
-                              <div className='choiceButton1'><button className='console-btn3' onClick={() => changePhase()}>그래, 해보자.</button></div>
+                              <div className='choiceButton1'><button className='console-btn3' onClick={() =>  dialogueHandler(2,5)}>흠...</button></div>
                               <div className='typing-text9'>==============================================================================================================</div>
                             </div>
                             : ''
                           }
-                          {isDialogue1 === 5 ? <div>
-                            <div className='PlayerText1'>저런 기업이 왜 나를 노리는 거지?{'<'}</div>
-                            <div className='typing-text5'>{">"} 두 번째 미션 위치 파악 완료.</div>
-                            <div className='typing-text7'>{">"} 두 번째 미션 진행 시작 예정. </div>
+                          {isDialogue2 === 5 ? <div>
+                            <div className='PlayerText1'>흠...{'<'}</div>
+                            <div className='typing-text5'>{">"} 세 번째 미션 위치 파악 완료.</div>
+                            <div className='typing-text7'>{">"} 세 번째 미션 진행 시작 예정. </div>
                             <div className='typing-text9'>==============================================================================================================</div>
-                            <div className='choiceButton1'><button className='console-btn3' onClick={() => changePhase()}>내 질문 안 끝났어!</button></div>
+                            <div className='choiceButton1'><button className='console-btn3' onClick={() => changePhase()}>그래, 시작하자.</button></div>
                             <div className='typing-text9'>==============================================================================================================</div>
                           </div> : ''
                           }
@@ -1035,8 +1011,30 @@ function App() {
                       </div>
                     </div>
                   </>
+                   :  phase === 6 ?
+                   <>
+                   <div className='secondPage'>
+                     <div className='backPage_grid_1-1'>
+                       <div className='mainTitle2' />
+                     </div>
+                     <div className='backPage_grid_4'>
+                     <div>
+                         CONORDEL_CONSOL(ADMIN) : <br />
+                         Last Login - 2105 Mar 05 15:26:25 on console<br />
+                         Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
+
+                         <div style={{ color: "green" }}>Protocol AD332 Initiated.</div>
+                         <div style={{ color: "blue" }}>Checking Location, Data gathering Required.</div>
+                         <div style={{ color: "blue" }}>First Location found. Collecting Procedure {'['}2/5{']'}</div>
+
+                         <div className='typing-text5'>{">"} 세번째 미션이 지정되었습니다.</div>
+                         <div className='typing-textMission4'>{">"} <button className='console-btn2' onClick={() => popupSwitch(true)}> 미션 확인 </button></div>
+                            {popup()}
+                       </div>
+                     </div>
+                   </div>
+                 </>
                    :
-                      
                       ''
 
       }
