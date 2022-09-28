@@ -424,6 +424,11 @@
     color:orangered;
   }
 
+  .fillupEmpty{
+    width:60px;
+    border:solid 1px #0071bc;
+  }
+
   .fillUpText{
     text-decoration: underline;
   }
