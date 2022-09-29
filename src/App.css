@@ -586,24 +586,18 @@
 .console-btn2{
   display:flex;
   height:fit-content;
-  width:70px;
-  background-color: var(--main-color);
-  font-size:11px;
+  width:fit-content;
+  font-size:12px;
   cursor:pointer;
   color:blue;
-  text-decoration: underline;
   margin-left: 5px;
-  border: 1px solid #000;
   font-family: "main";
-  justify-content:center;
   padding: 2%;
-  animation: typing 2s steps(1);
-  white-space: nowrap;
-  word-break: keep-all;
-  overflow: hidden;
-  animation-delay: 9s;
-  animation-fill-mode: backwards;
+  text-decoration: underline;
+
 }
+/* text-decoration: underline;
+  border: 1px solid #000; */
 
 .console-btn3{
   display:flex;
