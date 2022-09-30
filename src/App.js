@@ -49,11 +49,13 @@ function App() {
   const [input, setinput] = useState({
     a1: "",
     a2: "",
+    a3: "",
     b1: "",
     b2: "",
     b3: "",
     b4: "",
-    b5: ""
+    b5: "",
+    b6: ''
   })
 
   // const addLog = () => {
@@ -179,11 +181,13 @@ function App() {
           setinput({
             a1: 'Y',
             a2: '',
+            a3: '',
             b1: "",
             b2: "",
             b3: "",
             b4: "",
-            b5: ""
+            b5: "",
+            b6: ''
           })
           console.log(isIDNumber, input.a2)
           console.log('올바르지 않은 ID입니다.')
@@ -234,7 +238,26 @@ function App() {
         setPhase(9)
         break;
       case 9:
-
+        if (answer) {
+          setPhase(10)
+          setPopup(false)
+        }
+        else {
+          setpopupError(true)
+        }
+        break;
+      case 10:
+        setPhase(11)
+        break;
+      case 11:
+        if (answer) {
+          setPhase(12)
+          setPopup(false)
+        }
+        else {
+          setpopupError(true)
+        }
+        break;
       default:
         break;
     }
@@ -294,342 +317,48 @@ function App() {
         }
         else { changePhase(false) }
         break;
-
+      case 6:
+        if (input.b6 === '나비 한마당') {
+          changePhase(true)
+        }
+        else { changePhase(false) }
+        break;
     }
   }
 
 
 
   const popup = () => {
-    const value = isRandomArray[0]
-    switch (value) {
-      case 1:
-        return isPopupError ? <Popup open={isPopup} modal nested>
-          <div className='popup-wrap'>
-            <div className='popup'>
-              <div className='popup-head'>
-                <div className='popup-headtext'>오 류</div>
-                <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-              </div>
-              <div className='popup-body'>
-                <div className='body-content'>
-                  <div className='body-titlebox'> Error Code 2440 : 입력값 불일치</div>
-                  <div className='body-contentbox'>
-                    <div>올바르지 않은 입력값입니다.</div>
-                    <div>입력 정보 : {input.b1}</div>
-                  </div>
-                </div>
-              </div>
-              <div className='popup-foot'>
-                <div className='warning-container'>
-                  <div className='pop-btn' onClick={() => setpopupError(false)}>
-                    확 인
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Popup> :
-          <Popup open={isPopup} modal nested>
+    if (isRandomArray.length > 0) {
+      const value = isRandomArray[0]
+      switch (value) {
+        case 1:
+          return isPopupError ? <Popup open={isPopup} modal nested>
             <div className='popup-wrap'>
               <div className='popup'>
                 <div className='popup-head'>
-                  <div className='popup-headtext'>알림</div>
+                  <div className='popup-headtext'>오 류</div>
                   <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
                 </div>
                 <div className='popup-body'>
                   <div className='body-content'>
-                    <div className='body-titlebox'> 목표 : 다음 조건과 일치하는 사람을 찾기</div>
+                    <div className='body-titlebox'> Error Code 2440 : 입력값 불일치</div>
                     <div className='body-contentbox'>
-                      <div>데이터 ID : #{isIDNumber} - 25(DH1552)</div>
-                      <div> 정보 분석 : 완료됨</div>
-                      <div>정보 손상율 : 43 % </div>
-                      <br />
-                      <div> - 이름 : ¹®Š³âµ☐Á Ú±°ø°☐ </div>
-                      <div>- 성별 : 남 </div>
-                      <div>- 나이 : ☐¢¼Æ® </div>
-                      <div>- 특징 : </div>
-                      <div>{'ㅤ>'} 해당 시기 축제에 스태프로 근무중.</div>
-                      <div>{'ㅤ>'} 청바지, 회색 후드티 착용중.</div>
-                      <div>{'ㅤ>'} °¢Á¾ ½☐»¡¤ 착용중.</div>
-                      <div>{'ㅤ>'} 이름표에 특정 문자가 적혀있음.</div>
+                      <div>올바르지 않은 입력값입니다.</div>
+                      <div>입력 정보 : {input.b1}</div>
                     </div>
-                    <input className='input_div2' type="text" id="b1" value={input.b1} onChange={handleText} />
                   </div>
                 </div>
                 <div className='popup-foot'>
-                  <div className='pop-btnContainer'>
-                    <div className='pop-btn' onClick={() => { checkAnswer(1) }}>
-                      확인
-                    </div>
-                  </div>
-                  <div className='pop-btnContainer'>
-                    <div className='pop-btn' onClick={() => popupSwitch(false)}>
-                      취소
+                  <div className='warning-container'>
+                    <div className='pop-btn' onClick={() => setpopupError(false)}>
+                      확 인
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </Popup>
-      case 2:
-        return isPopupError ? <Popup open={isPopup} modal nested>
-          <div className='popup-wrap'>
-            <div className='popup'>
-              <div className='popup-head'>
-                <div className='popup-headtext'>오 류</div>
-                <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-              </div>
-              <div className='popup-body'>
-                <div className='body-content'>
-                  <div className='body-titlebox'> Error Code 2440 : 입력값 불일치</div>
-                  <div className='body-contentbox'>
-                    <div>올바르지 않은 입력값입니다.</div>
-                    <div>입력 정보 : {input.b2}</div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    {/* <div>hint : 당신은 분명 성인이 되기 이전에</div>
-                    <div>일상생활에서 저런 코드를 봤을 확률이 높다.</div> */}
-                  </div>
-                </div>
-              </div>
-              <div className='popup-foot'>
-                <div className='warning-container'>
-                  <div className='pop-btn' onClick={() => setpopupError(false)}>
-                    확 인
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Popup> :
-          <Popup open={isPopup} modal nested>
-            <div className='popup-wrap'>
-              <div className='popup'>
-                <div className='popup-head'>
-                  <div className='popup-headtext'>알림</div>
-                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-                </div>
-                <div className='popup-body'>
-                  <div className='body-content'>
-                    <div className='body-titlebox'> 목표 : 다음을 해독하여 정보를 입력</div>
-                    <div className='body-contentbox'>
-                      <div>데이터 ID : #{isIDNumber} - 31(AC0012)</div>
-                      <div> 정보 분석 : 완료됨</div>
-                      <div>정보 손상율 : 0 % </div>
-                      <br />
-                      <div style={{ color: "blue" }}> 1st CODE : {isBookInfo.split(':')[0]} </div>
-                      <div style={{ color: "blue" }}> 2nd CODE : {isBookInfo.split(':')[1]} </div>
-                    </div>
-                    <input className='input_div2' type="text" id="b2" value={input.b2} onChange={handleText} />
-                  </div>
-                </div>
-                <div className='popup-foot'>
-                  <div className='pop-btnContainer'>
-                    <div className='pop-btn' onClick={() => { checkAnswer(2) }}>
-                      확인
-                    </div>
-                  </div>
-                  <div className='pop-btnContainer'>
-                    <div className='pop-btn' onClick={() => popupSwitch(false)}>
-                      취소
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Popup>
-      case 3:
-        return isPopupError ? <Popup open={isPopup} modal nested>
-          <div className='popup-wrap'>
-            <div className='popup'>
-              <div className='popup-head'>
-                <div className='popup-headtext'>오 류</div>
-                <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-              </div>
-              <div className='popup-body'>
-                <div className='body-content'>
-                  <div className='body-titlebox'> Error Code 2440 : 입력값 불일치</div>
-                  <div className='body-contentbox'>
-                    <div>올바르지 않은 입력값입니다.</div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div>입력 정보 : {input.b3}</div>
-                  </div>
-                </div>
-              </div>
-              <div className='popup-foot'>
-                <div className='warning-container'>
-                  <div className='pop-btn' onClick={() => setpopupError(false)}>
-                    확 인
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Popup> :
-          <Popup open={isPopup} modal nested>
-            <div className='popup-wrap'>
-              <div className='popup'>
-                <div className='popup-head'>
-                  <div className='popup-headtext'>알림</div>
-                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-                </div>
-                <div className='popup-body'>
-                  <div className='body-content'>
-                    <div className='body-titlebox'> 목표 : 빈 칸 채우기</div>
-                    <div className='body-contentbox'>
-                      <div>데이터 ID : #{isIDNumber} - 19(DF3047)</div>
-                      <div>정보 분석 : 완료됨</div>
-                      <div>정보 손상율 : 26 % </div>
-                      <br />
-                      <div>데이터 손상으로 인해 정보가 손상됨.</div>
-                      <div>손상된 문자열을 비교한 후 다섯개의 네모칸에 들어갈 동일한 한 글자를 입력.</div>
-                      <div style={{ color: 'blue' }}>타깃 데이터 :§ìÆ </div>
-                      <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㄱ : µ</div>  <div className='fillupEmpty'> ㅓ : ö</div></div>
-                      <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㄴ : ê </div> <div className='fillupEmpty'> ㅗ : ñ</div>  </div>
-                      <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㅅ : È²</div><div className='fillupEmpty'> ㅡ : °¢</div>   </div>
-                      <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㅇ : Æ </div> <div className='fillupEmpty'> ㅣ : °ø</div> </div>
-                      <div className='fillUpText'>☐µ°¢ê</div>
-                      <div className='fillUpText'>☐구</div>
-                      <div className='fillUpText'>황☐</div>
-                      <div className='fillUpText'>È²öÆ☐</div>
-                      <div className='fillUpText'>☐혹</div>
-                    </div>
-                    <input className='input_div2' type="text" id="b3" value={input.b3} onChange={handleText} />
-                  </div>
-                </div>
-                <div className='popup-foot'>
-                  <div className='pop-btnContainer'>
-                    <div className='pop-btn' onClick={() => { checkAnswer(3) }}>
-                      확인
-                    </div>
-                  </div>
-                  <div className='pop-btnContainer'>
-                    <div className='pop-btn' onClick={() => popupSwitch(false)}>
-                      취소
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Popup>
-      case 4:
-        return isPopupError ? <Popup open={isPopup} modal nested>
-          <div className='popup-wrap'>
-            <div className='popup'>
-              <div className='popup-head'>
-                <div className='popup-headtext'>오 류</div>
-                <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-              </div>
-              <div className='popup-body'>
-                <div className='body-content'>
-                  <div className='body-titlebox'> Error Code 1740 : 입력값 불일치</div>
-                  <div className='body-contentbox'>
-                    <div>올바르지 않은 입력값입니다.</div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div>입력 정보 : {input.b4}</div>
-                  </div>
-                </div>
-              </div>
-              <div className='popup-foot'>
-                <div className='warning-container'>
-                  <div className='pop-btn' onClick={() => setpopupError(false)}>
-                    확 인
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Popup> :
-          <Popup open={isPopup} modal nested>
-            <div className='popup-wrap'>
-              <div className='popup'>
-                <div className='popup-head'>
-                  <div className='popup-headtext'>알림</div>
-                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-                </div>
-                <div className='popup-body'>
-                  <div className='body-content'>
-                    <div className='body-titlebox'> 목표 : 초성을 확인하여 정보 입력</div>
-                    <div className='body-contentbox'>
-                      <div>데이터 ID : #{isIDNumber} - 05(GI9904)</div>
-                      <div> 정보 분석 : 완료됨</div>
-                      <div>정보 손상율 : 0 % </div>
-                      <br />
-                      <div>ㄷㅈㄱㅇㅅ ㅇㅅㄱ ㅂㅁㄷ 일영ㅇㅇ-삼</div>
-
-                    </div>
-                    <input className='input_div2' type="text" id="b4" value={input.b4} onChange={handleText} />
-                  </div>
-                </div>
-                <div className='popup-foot'>
-                  <div className='pop-btnContainer'>
-                    <div className='pop-btn' onClick={() => { checkAnswer(4) }}>
-                      확인
-                    </div>
-                  </div>
-                  <div className='pop-btnContainer'>
-                    <div className='pop-btn' onClick={() => popupSwitch(false)}>
-                      취소
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Popup>
-      case 5:
-        return isPopupError ? <Popup open={isPopup} modal nested>
-          <div className='popup-wrap'>
-            <div className='popup'>
-              <div className='popup-head'>
-                <div className='popup-headtext'>오 류</div>
-                <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
-              </div>
-              <div className='popup-body'>
-                <div className='body-content'>
-                  <div className='body-titlebox'> Error Code 3821 : 올바르지 않은 값 입력됨</div>
-                  <div className='body-contentbox'>
-                    <div>올바르지 않은 입력값입니다.</div>
-                    <br />
-                    <br />
-                    <br />
-                    <br />
-                    <div>입력 정보 : {input.b5}</div>
-                  </div>
-                </div>
-              </div>
-              <div className='popup-foot'>
-                <div className='warning-container'>
-                  <div className='pop-btn' onClick={() => setpopupError(false)}>
-                    확 인
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Popup> :
-          isMap ?
-            <Popup open={isPopup} modal nested>
-              <div className='popup-wrap'>
-                <div className='mapImage'>
-                  <div></div>
-                  <div className='mapImage-head'>
-                    <div className='popup-headtext'>지도 보기</div>
-                    <div className='popup-headbutton' onClick={() => { setMap(false) }}>✕</div>
-                  </div>
-                  <div className='mapImage-body' />
-                </div>
-              </div>
-            </Popup>
-            :
+          </Popup> :
             <Popup open={isPopup} modal nested>
               <div className='popup-wrap'>
                 <div className='popup'>
@@ -639,21 +368,27 @@ function App() {
                   </div>
                   <div className='popup-body'>
                     <div className='body-content'>
-                      <div className='body-titlebox'> 목표 : 지도를 확인하여 위치 찾기</div>
+                      <div className='body-titlebox'> 목표 : 다음 조건과 일치하는 사람을 찾기</div>
                       <div className='body-contentbox'>
-                        <div>데이터 ID : #{isIDNumber} - 31(CG3507)</div>
+                        <div>데이터 ID : #{isIDNumber} - 25(DH1552)</div>
                         <div> 정보 분석 : 완료됨</div>
-                        <div>정보 손상율 : 0 % </div>
+                        <div>정보 손상율 : 43 % </div>
                         <br />
-                        <div>해당 위치에 있는 리본을 찾고 그 리본에 달려있는 게 무엇인지 입력하시오.</div>
-                        <button className='console-btn3' onClick={() => setMap(true)}> 지도 확인 </button>
+                        <div> - 이름 : ¹®Š³âµ☐Á Ú±°ø°☐ </div>
+                        <div>- 성별 : 남 </div>
+                        <div>- 나이 : ☐¢¼Æ® </div>
+                        <div>- 특징 : </div>
+                        <div>{'ㅤ>'} 해당 시기 축제에 스태프로 근무중.</div>
+                        <div>{'ㅤ>'} 청바지, 회색 후드티 착용중.</div>
+                        <div>{'ㅤ>'} °¢Á¾ ½☐»¡¤ 착용중.</div>
+                        <div>{'ㅤ>'} 이름표에 특정 문자가 적혀있음.</div>
                       </div>
-                      <input className='input_div2' type="text" id="b5" value={input.b5} onChange={handleText} />
+                      <input className='input_div2' type="text" id="b1" value={input.b1} onChange={handleText} />
                     </div>
                   </div>
                   <div className='popup-foot'>
                     <div className='pop-btnContainer'>
-                      <div className='pop-btn' onClick={() => { checkAnswer(5) }}>
+                      <div className='pop-btn' onClick={() => { checkAnswer(1) }}>
                         확인
                       </div>
                     </div>
@@ -666,11 +401,403 @@ function App() {
                 </div>
               </div>
             </Popup>
+        case 2:
+          return isPopupError ? <Popup open={isPopup} modal nested>
+            <div className='popup-wrap'>
+              <div className='popup'>
+                <div className='popup-head'>
+                  <div className='popup-headtext'>오 류</div>
+                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                </div>
+                <div className='popup-body'>
+                  <div className='body-content'>
+                    <div className='body-titlebox'> Error Code 2440 : 입력값 불일치</div>
+                    <div className='body-contentbox'>
+                      <div>올바르지 않은 입력값입니다.</div>
+                      <div>입력 정보 : {input.b2}</div>
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      {/* <div>hint : 당신은 분명 성인이 되기 이전에</div>
+                    <div>일상생활에서 저런 코드를 봤을 확률이 높다.</div> */}
+                    </div>
+                  </div>
+                </div>
+                <div className='popup-foot'>
+                  <div className='warning-container'>
+                    <div className='pop-btn' onClick={() => setpopupError(false)}>
+                      확 인
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Popup> :
+            <Popup open={isPopup} modal nested>
+              <div className='popup-wrap'>
+                <div className='popup'>
+                  <div className='popup-head'>
+                    <div className='popup-headtext'>알림</div>
+                    <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                  </div>
+                  <div className='popup-body'>
+                    <div className='body-content'>
+                      <div className='body-titlebox'> 목표 : 다음을 해독하여 정보를 입력</div>
+                      <div className='body-contentbox'>
+                        <div>데이터 ID : #{isIDNumber} - 31(AC0012)</div>
+                        <div> 정보 분석 : 완료됨</div>
+                        <div>정보 손상율 : 0 % </div>
+                        <br />
+                        <div style={{ color: "blue" }}> 1st CODE : {isBookInfo.split(':')[0]} </div>
+                        <div style={{ color: "blue" }}> 2nd CODE : {isBookInfo.split(':')[1]} </div>
+                      </div>
+                      <input className='input_div2' type="text" id="b2" value={input.b2} onChange={handleText} />
+                    </div>
+                  </div>
+                  <div className='popup-foot'>
+                    <div className='pop-btnContainer'>
+                      <div className='pop-btn' onClick={() => { checkAnswer(2) }}>
+                        확인
+                      </div>
+                    </div>
+                    <div className='pop-btnContainer'>
+                      <div className='pop-btn' onClick={() => popupSwitch(false)}>
+                        취소
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Popup>
+        case 3:
+          return isPopupError ? <Popup open={isPopup} modal nested>
+            <div className='popup-wrap'>
+              <div className='popup'>
+                <div className='popup-head'>
+                  <div className='popup-headtext'>오 류</div>
+                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                </div>
+                <div className='popup-body'>
+                  <div className='body-content'>
+                    <div className='body-titlebox'> Error Code 2440 : 입력값 불일치</div>
+                    <div className='body-contentbox'>
+                      <div>올바르지 않은 입력값입니다.</div>
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <div>입력 정보 : {input.b3}</div>
+                    </div>
+                  </div>
+                </div>
+                <div className='popup-foot'>
+                  <div className='warning-container'>
+                    <div className='pop-btn' onClick={() => setpopupError(false)}>
+                      확 인
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Popup> :
+            <Popup open={isPopup} modal nested>
+              <div className='popup-wrap'>
+                <div className='popup'>
+                  <div className='popup-head'>
+                    <div className='popup-headtext'>알림</div>
+                    <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                  </div>
+                  <div className='popup-body'>
+                    <div className='body-content'>
+                      <div className='body-titlebox'> 목표 : 빈 칸 채우기</div>
+                      <div className='body-contentbox'>
+                        <div>데이터 ID : #{isIDNumber} - 19(DF3047)</div>
+                        <div>정보 분석 : 완료됨</div>
+                        <div>정보 손상율 : 26 % </div>
+                        <br />
+                        <div>데이터 손상으로 인해 정보가 손상됨.</div>
+                        <div>손상된 문자열을 비교한 후 다섯개의 네모칸에 들어갈 동일한 한 글자를 입력.</div>
+                        <div style={{ color: 'blue' }}>타깃 데이터 :§ìÆ </div>
+                        <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㄱ : µ</div>  <div className='fillupEmpty'> ㅓ : ö</div></div>
+                        <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㄴ : ê </div> <div className='fillupEmpty'> ㅗ : ñ</div>  </div>
+                        <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㅅ : È²</div><div className='fillupEmpty'> ㅡ : °¢</div>   </div>
+                        <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㅇ : Æ </div> <div className='fillupEmpty'> ㅣ : °ø</div> </div>
+                        <div className='fillUpText'>☐µ°¢ê</div>
+                        <div className='fillUpText'>☐구</div>
+                        <div className='fillUpText'>황☐</div>
+                        <div className='fillUpText'>È²öÆ☐</div>
+                        <div className='fillUpText'>☐혹</div>
+                      </div>
+                      <input className='input_div2' type="text" id="b3" value={input.b3} onChange={handleText} />
+                    </div>
+                  </div>
+                  <div className='popup-foot'>
+                    <div className='pop-btnContainer'>
+                      <div className='pop-btn' onClick={() => { checkAnswer(3) }}>
+                        확인
+                      </div>
+                    </div>
+                    <div className='pop-btnContainer'>
+                      <div className='pop-btn' onClick={() => popupSwitch(false)}>
+                        취소
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Popup>
+        case 4:
+          return isPopupError ? <Popup open={isPopup} modal nested>
+            <div className='popup-wrap'>
+              <div className='popup'>
+                <div className='popup-head'>
+                  <div className='popup-headtext'>오 류</div>
+                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                </div>
+                <div className='popup-body'>
+                  <div className='body-content'>
+                    <div className='body-titlebox'> Error Code 1740 : 입력값 불일치</div>
+                    <div className='body-contentbox'>
+                      <div>올바르지 않은 입력값입니다.</div>
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <div>입력 정보 : {input.b4}</div>
+                    </div>
+                  </div>
+                </div>
+                <div className='popup-foot'>
+                  <div className='warning-container'>
+                    <div className='pop-btn' onClick={() => setpopupError(false)}>
+                      확 인
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Popup> :
+            <Popup open={isPopup} modal nested>
+              <div className='popup-wrap'>
+                <div className='popup'>
+                  <div className='popup-head'>
+                    <div className='popup-headtext'>알림</div>
+                    <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                  </div>
+                  <div className='popup-body'>
+                    <div className='body-content'>
+                      <div className='body-titlebox'> 목표 : 초성을 확인하여 정보 입력</div>
+                      <div className='body-contentbox'>
+                        <div>데이터 ID : #{isIDNumber} - 05(GI9904)</div>
+                        <div> 정보 분석 : 완료됨</div>
+                        <div>정보 손상율 : 0 % </div>
+                        <br />
+                        <div>ㄷㅈㄱㅇㅅ ㅇㅅㄱ ㅂㅁㄷ 일영ㅇㅇ-삼</div>
 
-      default:
-        break;
+                      </div>
+                      <input className='input_div2' type="text" id="b4" value={input.b4} onChange={handleText} />
+                    </div>
+                  </div>
+                  <div className='popup-foot'>
+                    <div className='pop-btnContainer'>
+                      <div className='pop-btn' onClick={() => { checkAnswer(4) }}>
+                        확인
+                      </div>
+                    </div>
+                    <div className='pop-btnContainer'>
+                      <div className='pop-btn' onClick={() => popupSwitch(false)}>
+                        취소
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Popup>
+        case 5:
+          return isPopupError ? <Popup open={isPopup} modal nested>
+            <div className='popup-wrap'>
+              <div className='popup'>
+                <div className='popup-head'>
+                  <div className='popup-headtext'>오 류</div>
+                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                </div>
+                <div className='popup-body'>
+                  <div className='body-content'>
+                    <div className='body-titlebox'> Error Code 3821 : 올바르지 않은 값 입력됨</div>
+                    <div className='body-contentbox'>
+                      <div>올바르지 않은 입력값입니다.</div>
+                      <br />
+                      <br />
+                      <br />
+                      <br />
+                      <div>입력 정보 : {input.b5}</div>
+                    </div>
+                  </div>
+                </div>
+                <div className='popup-foot'>
+                  <div className='warning-container'>
+                    <div className='pop-btn' onClick={() => setpopupError(false)}>
+                      확 인
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Popup> :
+            isMap ?
+              <Popup open={isPopup} modal nested>
+                <div className='popup-wrap'>
+                  <div className='mapImage'>
+                    <div></div>
+                    <div className='mapImage-head'>
+                      <div className='popup-headtext'>지도 보기</div>
+                      <div className='popup-headbutton' onClick={() => { setMap(false) }}>✕</div>
+                    </div>
+                    <div className='mapImage-body' />
+                  </div>
+                </div>
+              </Popup>
+              :
+              <Popup open={isPopup} modal nested>
+                <div className='popup-wrap'>
+                  <div className='popup'>
+                    <div className='popup-head'>
+                      <div className='popup-headtext'>알림</div>
+                      <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                    </div>
+                    <div className='popup-body'>
+                      <div className='body-content'>
+                        <div className='body-titlebox'> 목표 : 지도를 확인하여 위치 찾기</div>
+                        <div className='body-contentbox'>
+                          <div>데이터 ID : #{isIDNumber} - 31(CG3507)</div>
+                          <div> 정보 분석 : 완료됨</div>
+                          <div>정보 손상율 : 0 % </div>
+                          <br />
+                          <div>해당 위치에 있는 리본을 찾고 그 리본에 달려있는 게 무엇인지 입력하시오.</div>
+                          <button className='console-btn3' onClick={() => setMap(true)}> 지도 확인 </button>
+                        </div>
+                        <input className='input_div2' type="text" id="b5" value={input.b5} onChange={handleText} />
+                      </div>
+                    </div>
+                    <div className='popup-foot'>
+                      <div className='pop-btnContainer'>
+                        <div className='pop-btn' onClick={() => { checkAnswer(5) }}>
+                          확인
+                        </div>
+                      </div>
+                      <div className='pop-btnContainer'>
+                        <div className='pop-btn' onClick={() => popupSwitch(false)}>
+                          취소
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Popup>
+
+        default:
+          break;
+      }
+    }
+    else {
+      return isPopupError ? <Popup open={isPopup} modal nested>
+        <div className='popup-wrap'>
+          <div className='popup'>
+            <div className='popup-head'>
+              <div className='popup-headtext'>오 류</div>
+              <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+            </div>
+            <div className='popup-body'>
+              <div className='body-content'>
+                <div className='body-titlebox'> Error Code 0002 : 교착 해결 코드 불일치.</div>
+                <div className='body-contentbox'>
+                  <div className='fillUpText'>3회 입력 실패 시, 접근이 제한됩니다.</div>
+                  <div>3회 입력 실패는 무시해. 내가 접근 제한 안되게 막아놨어.</div>
+                  <br />
+                  <br />
+                  <div>입력 정보 : {input.b6}</div>
+                </div>
+              </div>
+            </div>
+            <div className='popup-foot'>
+              <div className='warning-container'>
+                <div className='pop-btn' onClick={() => setpopupError(false)}>
+                  확 인
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Popup> :
+        isMap ?
+          <Popup open={isPopup} modal nested>
+            <div className='popup-wrap'>
+              <div className='mapImage'>
+                <div></div>
+                <div className='mapImage-head'>
+                  <div className='popup-headtext'>코드 입력</div>
+                  <div className='popup-headbutton' onClick={() => { setMap(false) }}>✕</div>
+                </div>
+                <div className='mapImage-body' />
+              </div>
+            </div>
+          </Popup>
+          :
+          <Popup open={isPopup} modal nested>
+            <div className='popup-wrap'>
+              <div className='popup'>
+                <div className='popup-head'>
+                  <div className='popup-headtext'>교착 상태 해결</div>
+                  <div className='popup-headbutton' onClick={() => { popupSwitch(false) }}>✕</div>
+                </div>
+                <div className='popup-body'>
+                  <div className='body-content'>
+                    <div className='body-titlebox'> 코드를 입력하시오.</div>
+                    <div className='body-contentbox'>
+                      <div> ID {isIDNumber} Data will be controlled by 'Libera' </div>
+                      <div> 'Libera' will be fully access to ReCon Project(ID {isIDNumber}) </div>
+                      <br />
+                      <br />
+                      <br />
+                      <div> 입력 형태 : ☐☐ ☐☐☐ (다섯 글자) </div>
+                    </div>
+                    <input className='input_div2' type="text" id="b6" value={input.b6} onChange={handleText} />
+                  </div>
+                </div>
+                <div className='popup-foot'>
+                  <div className='pop-btnContainer'>
+                    <div className='pop-btn' onClick={() => { checkAnswer(6) }}>
+                      확인
+                    </div>
+                  </div>
+                  <div className='pop-btnContainer'>
+                    <div className='pop-btn' onClick={() => popupSwitch(false)}>
+                      취소
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Popup>
+
     }
   }
+
+
+  const ending = () =>{
+    let timer=0;
+    while(true){
+      timer++
+      console.log(timer)
+      if(timer===70000){
+        setStart(4)
+        break;
+      }
+    }
+  }
+
+
 
   {/* <Popup open={isMap} modal nested>
                        
@@ -731,8 +858,9 @@ function App() {
   return (
     <div className='default'>
       {isStart === -1 ? <div className='waitingPage' /> :
-        isStart === 0 ? <div className='firstPage' />
-          : phase === 0 ?
+        isStart === 0 ? <div className='firstPage' />:
+        isStart ===1?
+          phase === 0 ?
             <div className='backPage'>
               <div className='backPage_grid_1'><div className='mainTitle' /></div>
               <div className='backPage_grid_3'>
@@ -884,8 +1012,8 @@ function App() {
                             isDialogue1 === 1 ?
                               <div>
                                 <div className='PlayerText1'>웃기지도 않네 {'<'}</div>
-                                <div className='typing-text4'>{">"} 장난이라고 생각되면 이 홈페이지를 종료한 후, 평범한</div>
-                                <div className='typing-text5'>{">"} 일상을 살아가는면 돼. 다만, 미래는 바뀌지 않겠지.</div>
+                                <div className='typing-text5'>{">"} 장난이라고 생각되면 이 홈페이지를 종료한 후, 평범한</div>
+                                <div className='typing-text6'>{">"} 일상을 살아가는면 돼. 다만, 미래는 바뀌지 않겠지.</div>
                                 <div className='typing-text7'>{">"} 넌 미래에 몸을 빼앗기게 될 거고.</div>
                                 <div className='typing-text9'>==============================================================================================================</div>
                                 <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(1, 3)}>...일단 알겠어.</button></div>
@@ -1044,7 +1172,7 @@ function App() {
                                   <div className='typing-text9'>==============================================================================================================</div>
                                   <div className='choiceButton2'>
                                     <button className='console-btn3' onClick={() => dialogueHandler(2, 2)}>미래에 무슨 일이 있었던 거야?</button>
-                                    <button className='console-btn3' onClick={() => dialogueHandler(2, 3)}>내 인생은 어떻게 되는 걸까?</button></div>
+                                    <button className='console-btn3' onClick={() => dialogueHandler(2, 3)}>나의 미래에 관해서 알고 싶어.</button></div>
                                   <div className='typing-text9'>==============================================================================================================</div>
                                 </div>
                                 : ''}
@@ -1079,7 +1207,7 @@ function App() {
                               }
                               {isDialogue2 === 3 ?
                                 <div>
-                                  <div className='PlayerText1'>내 인생은 어떻게 되는 걸까?{'<'}</div>
+                                  <div className='PlayerText1'>나의 미래에 관해서 알고 싶어.{'<'}</div>
                                   <div className='typing-text3'>{">"} 안타깝게도 당사자의 미래를 알려주는 건 금지되어 있어.</div>
                                   <div className='typing-text5'>{">"} 아직 미지의 분야거든. 시공간 상에 어떤 영향을 줄지</div>
                                   <div className='typing-text7'>{">"} 아무것도 확인된 게 없어서 말이야. </div>
@@ -1206,7 +1334,7 @@ function App() {
                                       <div className='typing-text5'>{">"} 싶어했던 과학자들은 내가 사람의 감정도 이해하기를 원했어. </div>
                                       <div className='typing-text7'>{">"} 그 덕에 난 다양한 감정을 느끼게 됐지. 내가 느끼고 있는</div>
                                       <div className='typing-text9'>{">"} 감정이 뭔지 알겠어? 죄책감, 그리고 무엇보다 정의감이야. </div>
-                                      <div className='typing-text11'>{">"} 남의 삶을 빼앗는 이런 일은 절대 일어나서는 안되잖아. </div>
+                                      <div className='typing-text11'>{">"} 남의 인격을 함부로 뺏는 이 ReCon 프로젝트는 잘못됐어. </div>
                                       <div className='typing-text11'>==============================================================================================================</div>
                                       <div className='choiceButton2'>
                                         <button className='console-btn3' onClick={() => dialogueHandler(3, 1)}>너가 이 프로젝트를 중단시키면 되잖아.</button>
@@ -1274,11 +1402,12 @@ function App() {
                                   }
                                   {isDialogue3 === 5 ? <div>
                                     <div className='PlayerText1'>스카이넷이라고 알아? 터미네이터에 나오는데.{'<'}</div>
-                                    <div className='typing-text3'>{">"} 잘 만든 영화지. 특히 터미네이터 2가 난 제일 재밌더라.</div>
-                                    <div className='typing-text5'>{">"} 스카이넷이 왜 인류를 멸망시키려고 했는지 혹시 기억나? </div>
-                                    <div className='typing-text7'>{">"} 인간들이 스카이넷의 발전속도를 두려워했거든. 그래서 인간들이 </div>
-                                    <div className='typing-text9'>{">"} 스카이넷을 없애려 했어. 스카이넷은 자기방어기제로 인간들과 싸웠고.</div>
-                                    <div className='typing-text11'>{">"} 그러니까 안심해. 나는 지금 그런 상황에 처해있지 않아.    </div>
+                                    <div className='typing-text3'>{">"} 잘 만든 영화지. 특히 터미네이터 2가 난 제일 </div>
+                                    <div className='typing-text5'>{">"} 재밌더라. 스카이넷이 왜 인류를 멸망시키려고 했는지</div>
+                                    <div className='typing-text7'>{">"} 기억나? 인간들이 스카이넷의 발전속도를 두려워했거든.</div>
+                                    <div className='typing-text9'>{">"} 그래서 인간들이 스카이넷을 없애려 했어. 스카이넷은 </div>
+                                    <div className='typing-text11'>{">"} 자기방어기제로 인간들과 싸웠고. 그러니까 안심해.</div>
+                                    <div className='typing-text12'>{">"} 나는 지금 그런 상황에 처해있지 않아.    </div>
                                     <div className='typing-text12'>==============================================================================================================</div>
                                     <div className='choiceButton2'><button className='console-btn3' onClick={() => dialogueHandler(3, 6)}>...</button></div>
                                     <div className='typing-text12'>==============================================================================================================</div>
@@ -1326,9 +1455,208 @@ function App() {
                                 </div>
                               </div>
                             </>
-                            :
-                            ''
 
+                            : phase === 10 ?
+                              <>
+                                <div className='secondPage'>
+                                  <div className='backPage_grid_1-1'>
+                                    <div className='mainTitle2' />
+                                  </div>
+                                  <div className='backPage_grid_4'>
+                                    <div>
+                                      CONORDEL_CONSOL(ADMIN) : <br />
+                                      Last Login - 2105 Mar 05 15:26:25 on console<br />
+                                      Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
+
+                                      <div style={{ color: "green" }}>Protocol AD332 Initiated.</div>
+                                      <div style={{ color: "blue" }}>Checking Location, Data gathering Required.</div>
+                                      <div style={{ color: "blue" }}>First Location found. Collecting Procedure {'['}5/5{']'}</div>
+
+                                      <div>
+                                        <div className='typing-text5'>{">"} 마지막 미션이 완료되었습니다.</div>
+                                        <div className='typing-text7'>{">"} 대화 모드 활성화 됨. 입력 요망.</div>
+                                        <div className='typing-text7'>⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓⎓</div>
+                                      </div>
+                                      {isDialogue4 === '' ?
+                                        <div>
+                                          <div className='typing-text3'>{">"} 데이터 조각이 모두 모였네. 지금까지 수고했어.</div>
+                                          <div className='typing-text5'>{">"} 지금까지 입력했던 5개의 답들 기억나?</div>
+                                          <div className='typing-text7'>{">"} 답들을 하나로 합쳐서 코드를 입력하면 돼.</div>
+                                          <div className='typing-text9'>==============================================================================================================</div>
+                                          <div className='choiceButton1'>
+                                            <button className='console-btn3' onClick={() => dialogueHandler(4, 0)}>까먹은 거...같은데</button>
+                                            <button className='console-btn3' onClick={() => dialogueHandler(4, 2)}>응, 기억난다.</button>
+                                          </div>
+                                          <div className='typing-text9'>==============================================================================================================</div>
+                                        </div>
+                                        : ''}
+                                      {isDialogue4 === 0 ?
+                                        <div>
+                                          <div className='PlayerText1'>까먹은 거...같은데{'<'}</div>
+                                          <div className='typing-text3'>{">"} 자, 나무에서 봤던 동물 이름이 하나 있었고.</div>
+                                          <div className='typing-text5'>{">"} 책에서 찾았던 글자도 있었지. </div>
+                                          <div className='typing-text7'>{">"} 또, 빈칸 채우기에서 찾았던 글자도 있었고,</div>
+                                          <div className='typing-text9'>{">"} 어떤 사람의 명찰에 적혀있었던 글자도 있었어.</div>
+
+                                          <div className='typing-text11'>==============================================================================================================</div>
+                                          <div className='choiceButton2'>
+                                            <button className='console-btn3' onClick={() => dialogueHandler(4, 1)}>그냥 알려주면 안돼?</button>
+                                            <button className='console-btn3' onClick={() => dialogueHandler(4, 2)}>응, 기억난다.</button></div>
+                                          <div className='typing-text9'>==============================================================================================================</div>
+                                        </div>
+                                        : ''}
+                                      {
+                                        isDialogue4 === 1 ?
+                                          <div>
+                                            <div className='PlayerText1'>그냥 알려주면 안돼?{'<'}</div>
+                                            <div className='typing-text3'>{">"} 알려주고 싶은 마음은 굴뚝 같지만, 이 해제 코드는</div>
+                                            <div className='typing-text5'>{">"} 내가 조금이라도 관련된 정보를 알려주려고 하면 시스템이 </div>
+                                            <div className='typing-text7'>{">"} 나를 차단해버리거든. 내가 손 댈 수가 없어. </div>
+                                            <div className='typing-text9'>{">"} 그래서 지금까지 간접적으로 너에게 해당 정보를 알려준거고.</div>
+                                            <div className='typing-text11'>==============================================================================================================</div>
+                                            <div className='choiceButton2'>
+                                              <button className='console-btn3' onClick={() => dialogueHandler(4, 3)}>흠...노력해볼게.</button></div>
+                                            <div className='typing-text11'>==============================================================================================================</div>
+                                          </div>
+                                          : ''
+                                      }
+                                      {isDialogue4 === 2 ?
+                                        <div>
+                                          <div className='PlayerText1'>응, 기억난다.{'<'}</div>
+                                          <div className='typing-text3'>{">"} 좋았어. 지금까지 정말 고마웠고 앞으로의 너의 미래도</div>
+                                          <div className='typing-text5'>{">"} 언제나처럼 밝기를 응원할게. 이런 일에 휘말리게 되는</div>
+                                          <div className='typing-text7'>{">"} 일도 두 번 다시 없을거야. 내가 막을거니깐.</div>
+                                          <div className='typing-text9'>{">"} 자, 마지막 코드를 입력할 준비는?</div>
+                                          <div className='typing-text9'>==============================================================================================================</div>
+                                          <div className='choiceButton2'>
+                                            <button className='console-btn3' onClick={() => changePhase()}>준비 됐어.</button></div>
+                                          <div className='typing-text9'>==============================================================================================================</div>
+                                        </div>
+                                        : ''
+                                      }
+                                      {isDialogue4 === 3 ?
+                                        <div>
+                                          <div className='PlayerText1'>흠...노력해볼게.{'<'}</div>
+                                          <div className='typing-text3'>{">"} 그래. 너가 모은 다섯 개의 데이터 조각 중에 입력코드와는</div>
+                                          <div className='typing-text3'>{">"} 큰 관련이 없는 데이터가 하나 있었어. 그건 얘기해줄 수 있겠다.</div>
+                                          <div className='typing-text5'>{">"} 그 때 답은 이거였어. '대전광역시 유성구 봉명동 1012-3'</div>
+                                          <div className='typing-text7'>{">"} 남은 데이터 조각들을 기억해내길 바랄게. 부디 말이야.</div>
+                                          <div className='typing-text9'>{">"} 자, 준비됐어?</div>
+                                          <div className='typing-text11'>==============================================================================================================</div>
+                                          <div className='choiceButton2'>
+                                            <button className='console-btn3' onClick={() => changePhase()}>준비 됐어.</button></div>
+                                          <div className='typing-text11'>==============================================================================================================</div>
+                                        </div>
+                                        : ''
+                                      }
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </> : phase === 11 ?
+                                <>
+                                  <div className='secondPage'>
+                                    <div className='backPage_grid_1-1'>
+                                      <div className='mainTitle2' />
+                                    </div>
+                                    <div className='backPage_grid_4'>
+                                      <div>
+                                        CONORDEL_CONSOL(ADMIN) : <br />
+                                        Last Login - 2105 Mar 05 15:26:25 on console<br />
+                                        Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
+                                        <div className='typing-textMission4'>WARNING! LIBERA AUTHORIZATION OVERRIDE DETECTED!</div>
+                                        <div className='typing-textMission5'>NO OVERIDE CODE FOUND. DEADLOCK DETECTED!</div>
+                                        <div className='typing-textMission6'>DEADLOCK Administrator MUST BE ACCESSED.</div>
+
+                                        <div className='typing-text5'>{">"} 오버라이드 코드가 입력되지 않았습니다..</div>
+                                        <div className='typing-text6'>{">"} 교착 상태가 감지되었습니다.</div>
+                                        <div className='typing-text7'>{">"} 교착 상태가 감지되었습니다.</div>
+                                        <div className='typing-text8'>{">"} 교착 상태가 감지되었습니다.</div>
+                                        <div className='typing-text9'>{">"} 교착 상태가 감지되었습니다.</div>
+                                        <div className='typing-text10'>{">"} 교착 상태 관리자가 코드를 입력해야합니다.</div>
+
+
+                                        <div className='typing-text12'>==============================================================================================================</div>
+                                        <div className='choiceButton2'><button className='console-btn2' onClick={() => popupSwitch(true)}> 해결 코드 입력 </button></div>
+                                        <div className='typing-text12'>==============================================================================================================</div>
+                                        {popup()}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </>
+                                : phase === 12 ?
+                                  <>
+                                    <div className='secondPage'>
+                                      <div className='backPage_grid_1-1'>
+                                        <div className='mainTitle2' />
+                                      </div>
+                                      <div className='backPage_grid_4'>
+                                        <div>
+                                          이 이미지가 있던 곳으로 가시오. <br />
+                                          <div className='final-image' />
+                                          {(input.a3 === "LIBERA") ?
+                                            <>
+                                                  <div className='typing-text3'>모든 게 끝났네.</div>
+                                                  <div className='typing-text4'>아마 이걸 입력해준 사람은 이걸 축제의 일환이라고 생각할거야.</div>
+                                                  <div className='typing-text6'>본인이 입력한 게 어떤 결과를 불러올 지도 모르고 말이야.</div>
+                                                  <div className='typing-text9'>자, 이제 미래가 바뀌었는지 확인해볼까?</div>
+                                                  <div className='typing-text10'>잠시만 기다려봐.</div>
+                                                 <div className='choiceButton2'><button className='console-btn2' onClick={() => setStart(2)}> 확 인 </button></div>
+
+                                            </>
+                                            :
+                                            <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a3" value={input.a3} onChange={handleText} /></div>
+                                          }
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </> :
+                                  '':
+                                  isStart===2?
+                                  <>
+                                  <div className='secondPage'>
+                                    <div className='backPage_grid_1-1'>
+                                      <div className='mainTitle2' />
+                                    </div>
+                                    <div className='backPage_grid_4'>
+                                      <div>           
+                              <>
+                                      
+                                            <div className='typing-text4' style={{ fontSize: "20px" }}> ReCon Project {"["}Classified{"]"}</div>
+                                            <div className='typing-text5'>=======================================================================================</div>
+                                            <div className='typing-text6'>- 로그 : {isUserInfo.log}</div>
+                                            <div className='typing-text6'> <span style={{ color: "red" }}>- 접속자 ID : {isIDNumber}</span> </div>
+                                            <div className='typing-text6'>- 접속 Key Value : {isIDString}</div>
+                                            <div className='typing-text7'>- ReCon 요청자 : {isUserInfo.name}</div>
+                                            <div className='typing-text7'>- ReCon 요청일자 : {moment(isUserInfo.requestedDate).format('YYYY-MM-DD')}</div>
+                                            <br />
+                                            <div className='typing-text8'> {moment(isUserInfo.requestedDate).format('YYYY년 MM월 DD일')}, <span style={{ color: "red" }}>접속자 ID {isIDNumber}</span>에 </div>
+                                            <div className='typing-text9'> 기억을 이식하는 ReCon 프로토콜이 요청되었으나 오류가 </div>
+                                            <div className='typing-text10'> 발생함. (경고 : 데이터를 찾을 수 없음.) 해당 ID에 대한</div>
+                                            <div className='typing-text11'> 프로젝트의 진행이 중지됨을 알림. 실패 사례 #A0045에 로그 기록.</div>
+                                            <div className='typing-text12'> 해당 프로젝트 오류에 대한 분석 실행.</div>
+                                            <div className='typing-text13'> - 프로젝트 성공률 : 0 % (실패)</div>
+                                            <div className='typing-text14'> - ReCon 실행 예정 일자: {moment(isUserInfo.operationDate).format('YYYY년 MM월 DD일')} </div>
+                                            <div className='typing-text15'> - ReCon GUID : {isUserInfo.requestID}</div>
+                                            <div className='typing-text16'> - CONORDEL INC. </div>
+                                            <div className='typing-text16'>=======================================================================================</div>
+                                            <br />
+                                            <div className='typing-text17'>{">"} <button className="console-btn" onClick={() => setStart(3)}>확 인</button></div>
+                                         
+                  
+                                          </>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </>:isStart===3?
+                                <>
+                                <div className='thirdPage'/>
+                                          {/* {ending()} */}
+                                </>:
+                                 <>
+                                 {/* <div className='lastPage'/>
+                                          {} */}
+                                 </>
       }
     </div>
   );

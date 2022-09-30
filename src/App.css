@@ -44,6 +44,28 @@
   justify-content: center;
 }
 
+.thirdPage{
+  background-image: url('./Img/GameTitle.png');
+  width:80%;
+  height:45%;
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  -webkit-animation: flicker-out-1 2s linear both;
+	        animation: flicker-out-1 2s linear both;
+          animation-delay: 3s;
+}
+
+.lastPage{
+  background-image: url('./Img/ConOrDel.png');
+  width:80%;
+  height:45%;
+  background-size:100% 100%;
+  background-repeat: no-repeat;
+  -webkit-animation: flicker-out-1 2s linear both;
+	        animation: flicker-out-1 2s linear both;
+          animation-delay: 10s;
+}
+
 .waitingPage{
   background-image: url('./Img/404_errorpage.png');
   width:80%;
@@ -689,6 +711,17 @@
   background-repeat: no-repeat;        
   background-position: center;    
 }
+
+.final-image{      
+  width:150px;
+  height:150px;
+  display:flex; 
+  background-image: url('./Img/finalAccessPoint.png');
+  background-size:cover;
+  background-repeat: no-repeat;        
+  background-position: center;    
+}
+
 
 
 @-webkit-keyframes loader4{

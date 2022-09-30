@@ -392,6 +392,53 @@
     color:blue;
   }
   
+  .typing-textMission4{
+    width:100%;
+    height: fit-content;
+    animation: typing 2s steps(22);
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    line-height: 16px;
+    font-family: 'main';
+    font-size:12px;
+    margin: 3px 0;
+    animation-delay: 2s;
+    animation-fill-mode: backwards;
+    color:Yellow
+  }
+
+  .typing-textMission5{
+    width:100%;
+    height: fit-content;
+    animation: typing 2s steps(22);
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    line-height: 16px;
+    font-family: 'main';
+    font-size:12px;
+    margin: 3px 0;
+    animation-delay: 3s;
+    animation-fill-mode: backwards;
+    color:RED
+  }
+  .typing-textMission6{
+    width:100%;
+    height: fit-content;
+    animation: typing 2s steps(22);
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    line-height: 16px;
+    font-family: 'main';
+    font-size:12px;
+    margin: 3px 0;
+    animation-delay: 4s;
+    animation-fill-mode: backwards;
+    display:flex;
+    color:Yellow;
+  }
 
 
 
