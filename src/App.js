@@ -929,38 +929,38 @@ function App() {
 
 
                         {(input.a1 === "y" || input.a1 === "Y") ?
-  <button onClick={()=>setStart(4)}>asdf</button>
 
-                          // <>
-                          //   <div className='typing'>{">"} 참여 확인 완료. 국소장 일치 확인됨.</div>
-                          //   <div className='typing-text1'>{">"} 프로토콜 AD233 실행.</div>
-                          //   <div className='typing-text2'>{">"} 미션 이행 필요.</div>
-                          //   <div className='typing-text3'>{">"} 다음의 로그가 발견되었습니다.</div>
-                          //   <br />
-                          //   <div className='typing-text4' style={{ fontSize: "20px" }}> ReCon Project {"["}Classified{"]"}</div>
-                          //   <div className='typing-text5'>=======================================================================================</div>
-                          //   <div className='typing-text6'>- 로그 : {isUserInfo.log}</div>
-                          //   <div className='typing-text6'> <span style={{ color: "red" }}>- 접속자 ID : {isIDNumber}</span> </div>
-                          //   <div className='typing-text6'>- 접속 Key Value : {isIDString}</div>
-                          //   <div className='typing-text7'>- ReCon 요청자 : {isUserInfo.name}</div>
-                          //   <div className='typing-text7'>- ReCon 요청일자 : {moment(isUserInfo.requestedDate).format('YYYY-MM-DD')}</div>
-                          //   <br />
-                          //   <div className='typing-text8'> {moment(isUserInfo.requestedDate).format('YYYY년 MM월 DD일')}, <span style={{ color: "red" }}>접속자 ID {isIDNumber}</span>에 </div>
-                          //   <div className='typing-text9'> 기억을 이식하는 ReCon 프로토콜이 요청됨. 준비 완료까지 </div>
-                          //   <div className='typing-text10'> 1주일이 소모될 예정. 프로토콜 실행 시 기존 절차를 따를 것.</div>
-                          //   <div className='typing-text11'> 성공 시 요청자는ㅤ<span style={{ color: "red" }}>접속자 ID {isIDNumber}</span>의 인격을 대신하여</div>
-                          //   <div className='typing-text12'> 몸의 제어권을 성공적으로 차지할 것으로 예측됨.</div>
-                          //   <div className='typing-text13'> - 프로젝트 성공률 : 99.3 %</div>
-                          //   <div className='typing-text14'> - ReCon 실행 예정 일자: {moment(isUserInfo.operationDate).format('YYYY년 MM월 DD일')} </div>
-                          //   <div className='typing-text15'> - ReCon GUID : {isUserInfo.requestID}</div>
-                          //   <div className='typing-text16'> - CONORDEL INC. </div>
-                          //   <div className='typing-text16'>=======================================================================================</div>
-                          //   <br />
-                          //   <div className='typing-text17'>{">"} <span style={{ color: "red" }}>접속자 ID {isIDNumber}</span>의 인격 유지를 위해 데이터 수거 필요.</div>
-                          //   <div className='typing-text18'>{">"} 정보를 모두 확인했다면 지정받은 본인 ID를 입력하십시오.</div>
-                          //   <div className='typing-text19'>{">"} <input className='input_div' style={{ marginLeft: "7px" }} type="number" id="a2" value={input.a2} onChange={handleText} /><button className="console-btn" onClick={() => changePhase()}>입력</button></div>
 
-                          // </>
+                          <>
+                            <div className='typing'>{">"} 참여 확인 완료. 국소장 일치 확인됨.</div>
+                            <div className='typing-text1'>{">"} 프로토콜 AD233 실행.</div>
+                            <div className='typing-text2'>{">"} 미션 이행 필요.</div>
+                            <div className='typing-text3'>{">"} 다음의 로그가 발견되었습니다.</div>
+                            <br />
+                            <div className='typing-text4' style={{ fontSize: "20px" }}> ReCon Project {"["}Classified{"]"}</div>
+                            <div className='typing-text5'>=======================================================================================</div>
+                            <div className='typing-text6'>- 로그 : {isUserInfo.log}</div>
+                            <div className='typing-text6'> <span style={{ color: "red" }}>- 접속자 ID : {isIDNumber}</span> </div>
+                            <div className='typing-text6'>- 접속 Key Value : {isIDString}</div>
+                            <div className='typing-text7'>- ReCon 요청자 : {isUserInfo.name}</div>
+                            <div className='typing-text7'>- ReCon 요청일자 : {moment(isUserInfo.requestedDate).format('YYYY-MM-DD')}</div>
+                            <br />
+                            <div className='typing-text8'> {moment(isUserInfo.requestedDate).format('YYYY년 MM월 DD일')}, <span style={{ color: "red" }}>접속자 ID {isIDNumber}</span>에 </div>
+                            <div className='typing-text9'> 기억을 이식하는 ReCon 프로토콜이 요청됨. 준비 완료까지 </div>
+                            <div className='typing-text10'> 1주일이 소모될 예정. 프로토콜 실행 시 기존 절차를 따를 것.</div>
+                            <div className='typing-text11'> 성공 시 요청자는ㅤ<span style={{ color: "red" }}>접속자 ID {isIDNumber}</span>의 인격을 대신하여</div>
+                            <div className='typing-text12'> 몸의 제어권을 성공적으로 차지할 것으로 예측됨.</div>
+                            <div className='typing-text13'> - 프로젝트 성공률 : 99.3 %</div>
+                            <div className='typing-text14'> - ReCon 실행 예정 일자: {moment(isUserInfo.operationDate).format('YYYY년 MM월 DD일')} </div>
+                            <div className='typing-text15'> - ReCon GUID : {isUserInfo.requestID}</div>
+                            <div className='typing-text16'> - CONORDEL INC. </div>
+                            <div className='typing-text16'>=======================================================================================</div>
+                            <br />
+                            <div className='typing-text17'>{">"} <span style={{ color: "red" }}>접속자 ID {isIDNumber}</span>의 인격 유지를 위해 데이터 수거 필요.</div>
+                            <div className='typing-text18'>{">"} 정보를 모두 확인했다면 지정받은 본인 ID를 입력하십시오.</div>
+                            <div className='typing-text19'>{">"} <input className='input_div' style={{ marginLeft: "7px" }} type="number" id="a2" value={input.a2} onChange={handleText} /><button className="console-btn" onClick={() => changePhase()}>입력</button></div>
+
+                          </>
                           :
                           <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
                         }
@@ -1733,6 +1733,9 @@ function App() {
                     <div className='backPage_grid_4'>
                       <div>
                         <div className='typing-text1' style={{ fontSize: "20px" }}> CONTROL OR DELETE </div>
+                        <br/>
+                        <br/>
+                        <br/>
                         <div className='typing-text3'>- 제작 : AROUNDKorea CORP.</div>
                         <div className='typing-text5'>- 기획 : IxieL, ㅇㅅㅎ</div>
                         <div className='typing-text7'>- 디자인 : ㅇㅅㅎ </div>
