@@ -24,20 +24,17 @@ export const nameInfo = [
 ]
 
 const bookInfo =[
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3',
-    '811.6-박211ㄷ : 12p-1-3'
+    '321.55 대25ㄷ : p.14-1st-30th',
+    '838 무292ㅈ : p.10-2nd-22nd',
+    '325.1 피64ㅈ: p.186-2nd-8th',
+    '808 세14ㅁ 172 : p.61-2nd-11th',
+    '181.383 커877ㄴ : p.103-1st-10th',
+    '372.68 손64ㅇ : p.27-4th-1st',
+    '813.7 박64ㅅ: p.9-21st-5th'
 ]
 
 export const getBookInfo = () => {
-    const randomNumber = Math.floor(Math.random()*(9-0)+1)
+    const randomNumber = Math.floor(Math.random()*(6-0)+1)
     return bookInfo[randomNumber]
 }
 
@@ -55,6 +52,11 @@ export const randomIDGenerator = ()=>{
     console.log(randomNumber)
     return [randomNumber,randomString]
 }
+
+export const randomMapSelecter = () => {
+    const randomNumber = Math.floor(Math.random()*(2-0)+1)
+    return randomNumber
+}   
 
 export const test = () => {
     console.log('?')

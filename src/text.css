@@ -450,8 +450,8 @@
     line-height: 16px;
     font-family: 'main';
     margin: 3px 0;
-    animation-delay: 5s;
-    animation-fill-mode: backwards;
+    /* animation-delay: 5s;
+    animation-fill-mode: backwards; */
     justify-content:right;
     display:flex;
     color:orangered;
@@ -464,4 +464,8 @@
 
   .fillUpText{
     text-decoration: underline;
+  }
+
+  .lineThroughText{
+    text-decoration: line-through;
   }
