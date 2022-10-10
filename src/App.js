@@ -925,10 +925,11 @@ function App() {
                         <div className='typing-text2'>{">"} 맞다면 Y, 아니라면 N을 입력하십시오.</div>
                     
                         {
-                            (input.a1 !== "y" || input.a1 !== "Y" || input.a1 !== "n" || input.a1 !== "N") ?
-                           <>
+                            (input.a1 === "y" || input.a1 === "Y" || input.a1 === "n" || input.a1 === "N") ?
+                            '': <>
+                          
                           <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
-                          </>:''
+                          </>
                        }
                         {(input.a1 === "y" || input.a1 === "Y") &&
                           <>
