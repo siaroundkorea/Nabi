@@ -923,14 +923,14 @@ function App() {
                         <div style={{ color: '#0000ff' }}>Data successfully transferred, results check completed.</div>
                         <div className='typing'>{">"} 당신은 지금 2022 나Be한마당 행사에 참여 중입니까? </div>
                         <div className='typing-text2'>{">"} 맞다면 Y, 아니라면 N을 입력하십시오.</div>
-                        {/* {input.a1!=='Y' || input.a1!=='y'?  
-                    <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
-                  :''} */}
-
-
+                    
+                        {
+                            (input.a1 !== "y" || input.a1 !== "Y" || input.a1 !== "n" || input.a1 !== "N") ?
+                           <>
+                          <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
+                          </>:''
+                       }
                         {(input.a1 === "y" || input.a1 === "Y") &&
-
-
                           <>
                             <div className='typing'>{">"} 참여 확인 완료. 국소장 일치 확인됨.</div>
                             <div className='typing-text1'>{">"} 프로토콜 AD233 실행.</div>
@@ -961,8 +961,6 @@ function App() {
                             <div className='typing-text19'>{">"} <input className='input_div' style={{ marginLeft: "7px" }} type="number" id="a2" value={input.a2} onChange={handleText} /><button className="console-btn" onClick={() => changePhase()}>입력</button></div>
 
                           </>
-
-
                         }
                         {
                           ((input.a1 === "n" || input.a1 === "N")) &&
@@ -977,12 +975,7 @@ function App() {
                             <div className='choiceButton1'><button className='console-btn' onClick={() => setStart(5)}> 확인 </button></div>
                           </>
                         }
-                        {
-                            (input.a1 !== "y" || input.a1 !== "Y" || input.a1 !== "n" || input.a1 !== "N") ?
-                           <>
-                          <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
-                          </>:''
-                       }
+                       
                       </div>
                     </div>
                   </div>
