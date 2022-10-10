@@ -135,16 +135,16 @@ function App() {
           setStart(4);
         }
       }
-      else if(isStart===4){
+      else if (isStart === 4) {
         setTime(0)
       }
-      else if(isStart===5){
-        if(Math.floor((time/1000)===5)){
+      else if (isStart === 5) {
+        if (Math.floor((time / 1000) === 5)) {
           console.log('close')
           window.close()
         }
       }
-      else{
+      else {
         if (Math.floor((time / 1000)) === 11) {
 
           setLoading(true);
@@ -182,7 +182,7 @@ function App() {
   // showSnatcherInfo(true)
 
   // console.log(nameInfo)
- 
+
 
 
 
@@ -593,14 +593,14 @@ function App() {
                         <br />
                         <div>데이터 손상으로 인해 정보가 손상됨.</div>
                         <div>손상된 문자열을 비교한 후 다섯개의 네모칸에 들어갈 동일한 한 글자를 입력.</div>
-                        
-                        <div style={{display:'flex', flexDirection:"column",justifyContent:'center',alignItems:'center', marginTop:'10px'}}>
-                        <div>
-                        <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㄱ : µ</div>  <div className='fillupEmpty'> ㄴ : ê </div> <div className='fillupEmpty'> ㅅ : È</div><div className='fillupEmpty'> ㅇ : Æ </div> </div>
-                        <div style={{ display: 'flex',marginBottom:"10px" }}> <div className='fillupEmpty'> ㅓ : ö</div><div className='fillupEmpty'> ㅗ : ñ</div> <div className='fillupEmpty'> ㅡ : °¢</div> <div className='fillupEmpty'> ㅣ : °ø</div>  </div>
-                        
-                        </div>
-                        <div>ÈöÆ☐, ☐µ°¢ê, ☐구, 황☐, ☐신</div>
+
+                        <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
+                          <div>
+                            <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㄱ : µ</div>  <div className='fillupEmpty'> ㄴ : ê </div> <div className='fillupEmpty'> ㅅ : È</div><div className='fillupEmpty'> ㅇ : Æ </div> </div>
+                            <div style={{ display: 'flex', marginBottom: "10px" }}> <div className='fillupEmpty'> ㅓ : ö</div><div className='fillupEmpty'> ㅗ : ñ</div> <div className='fillupEmpty'> ㅡ : °¢</div> <div className='fillupEmpty'> ㅣ : °ø</div>  </div>
+
+                          </div>
+                          <div>ÈöÆ☐, ☐µ°¢ê, ☐구, 황☐, ☐신</div>
                         </div>
                       </div>
                       <input className='input_div2' type="text" id="b3" value={input.b3} onChange={handleText} />
@@ -928,7 +928,7 @@ function App() {
                   :''} */}
 
 
-                        {(input.a1 === "y" || input.a1 === "Y") ?
+                        {(input.a1 === "y" || input.a1 === "Y") &&
 
 
                           <>
@@ -961,8 +961,8 @@ function App() {
                             <div className='typing-text19'>{">"} <input className='input_div' style={{ marginLeft: "7px" }} type="number" id="a2" value={input.a2} onChange={handleText} /><button className="console-btn" onClick={() => changePhase()}>입력</button></div>
 
                           </>
-                          :
-                          <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
+
+
                         }
                         {
                           ((input.a1 === "n" || input.a1 === "N")) &&
@@ -977,6 +977,12 @@ function App() {
                             <div className='choiceButton1'><button className='console-btn' onClick={() => setStart(5)}> 확인 </button></div>
                           </>
                         }
+                        {
+                            (input.a1 !== "y" || input.a1 !== "Y" || input.a1 !== "n" || input.a1 !== "N") && 
+                           <>
+                          <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
+                          </>
+                       }
                       </div>
                     </div>
                   </div>
@@ -1640,13 +1646,13 @@ function App() {
                                           <div className='typing-textMission4'>WARNING! LIBERA AUTHORIZATION OVERRIDE DETECTED!</div>
                                           <div className='typing-textMission5'>NO OVERIDE CODE FOUND. DEADLOCK DETECTED!</div>
                                           <div className='typing-textMission6'>DEADLOCK Administrator MUST BE ACCESSED.</div>
-                                        <div>
-                                          <div className='typing-text5'>{">"} 오버라이드 코드가 입력되지 않았습니다..</div>
-                                          <div className='typing-text6'>{">"} 교착 상태가 감지되었습니다.</div>
-                                          <div className='typing-text7'>{">"} 교착 상태가 감지되었습니다.</div>
-                                          <div className='typing-text8'>{">"} 교착 상태가 감지되었습니다.</div>
-                                          <div className='typing-text9'>{">"} 교착 상태가 감지되었습니다.</div>
-                                          <div className='typing-text10'>{">"} 교착 상태 관리자가 코드를 입력해야합니다.</div>
+                                          <div>
+                                            <div className='typing-text5'>{">"} 오버라이드 코드가 입력되지 않았습니다..</div>
+                                            <div className='typing-text6'>{">"} 교착 상태가 감지되었습니다.</div>
+                                            <div className='typing-text7'>{">"} 교착 상태가 감지되었습니다.</div>
+                                            <div className='typing-text8'>{">"} 교착 상태가 감지되었습니다.</div>
+                                            <div className='typing-text9'>{">"} 교착 상태가 감지되었습니다.</div>
+                                            <div className='typing-text10'>{">"} 교착 상태 관리자가 코드를 입력해야합니다.</div>
                                           </div>
 
                                           <div className='typing-text12'>==============================================================================================================</div>
@@ -1723,44 +1729,44 @@ function App() {
                 </div>
               </> : isStart === 3 ?
                 <div className='thirdPage' />
-                : isStart=== 4?
-                <>
-                  <div className='secondPage'>
-                    <div className='backPage_grid_1-1'>
-                      <div className='logo' />
-                    </div>
-                    <div className='backPage_grid_4'>
-                      <div>
-                        <div className='typing-text1' style={{ fontSize: "20px" }}> CONTROL OR DELETE </div>
-                        <br/>
-                        <br/>
-                        <br/>
-                        <div className='typing-text3'>- 제작 : AROUNDKorea CORP.</div>
-                        <div className='typing-text5'>- 기획 : IxieL, ㅇㅅㅎ</div>
-                        <div className='typing-text7'>- 디자인 : ㅇㅅㅎ </div>
-                        <div className='typing-text9'>- 스토리 : ㅇㅅㅎ, IxieL</div>
-                        <div className='typing-text10'>- 개발 : IxieL</div>
-                        <div className='typing-text11'>- 그 외 잡다한 것 모두 : ㅇㅅㅎ, IxieL</div>
-                        <div className='choiceButton2'><button className='console-btn' onClick={() => setStart(5)}> 확인 </button></div>
+                : isStart === 4 ?
+                  <>
+                    <div className='secondPage'>
+                      <div className='backPage_grid_1-1'>
+                        <div className='logo' />
+                      </div>
+                      <div className='backPage_grid_4'>
+                        <div>
+                          <div className='typing-text1' style={{ fontSize: "20px" }}> CONTROL OR DELETE </div>
+                          <br />
+                          <br />
+                          <br />
+                          <div className='typing-text3'>- 제작 : AROUNDKorea CORP.</div>
+                          <div className='typing-text5'>- 기획 : IxieL, ㅇㅅㅎ</div>
+                          <div className='typing-text7'>- 디자인 : ㅇㅅㅎ </div>
+                          <div className='typing-text9'>- 스토리 : ㅇㅅㅎ, IxieL</div>
+                          <div className='typing-text10'>- 개발 : IxieL</div>
+                          <div className='typing-text11'>- 그 외 잡다한 것 모두 : ㅇㅅㅎ, IxieL</div>
+                          <div className='choiceButton2'><button className='console-btn' onClick={() => setStart(5)}> 확인 </button></div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </>:
-                 <>
-                 <div className='secondPage'>
-                   <div className='backPage_grid_1-1'>
-                   </div>
-                   <div className='backPage_grid_4'>
-                     <div>
-                      <div>
-                        <div className='typing-text1'> 3초 후에 창이 닫힙니다. </div>
-                        <div className='typing-text2'> 2초 후에 창이 닫힙니다. </div>
-                        <div className='typing-text3'> 1초 후에 창이 닫힙니다. </div>
+                  </> :
+                  <>
+                    <div className='secondPage'>
+                      <div className='backPage_grid_1-1'>
+                      </div>
+                      <div className='backPage_grid_4'>
+                        <div>
+                          <div>
+                            <div className='typing-text1'> 3초 후에 창이 닫힙니다. </div>
+                            <div className='typing-text2'> 2초 후에 창이 닫힙니다. </div>
+                            <div className='typing-text3'> 1초 후에 창이 닫힙니다. </div>
+                          </div>
                         </div>
-                     </div>
-                   </div>
-                 </div>
-               </>
+                      </div>
+                    </div>
+                  </>
       }
     </div>
   );
