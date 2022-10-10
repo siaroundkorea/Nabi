@@ -922,7 +922,7 @@ function App() {
                         <div style={{ color: '#008000' }}>WebPage Connected Succesfully</div>
                         <div style={{ color: '#0000ff' }}>Data successfully transferred, results check completed.</div>
                         <div className='typing'>{">"} 당신은 지금 2022 나Be한마당 행사에 참여 중입니까? </div>
-                        <div className='typing-text2'>{">"} 맞다면 Y, 아니라면 X를 입력하십시오.</div>
+                        <div className='typing-text2'>{">"} 맞다면 Y, 아니라면 N을 입력하십시오.</div>
                         {/* {input.a1!=='Y' || input.a1!=='y'?  
                     <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
                   :''} */}
@@ -967,15 +967,14 @@ function App() {
                         {
                           ((input.a1 === "n" || input.a1 === "N")) &&
                           <>
-                            <div className='typing-text1'>{">"}  미참여 확인 완료.</div>
-                            <div className='typing-text1'>{">"} ID:3358.</div>
-                            <div className='typing-text2'>{">"} 접속 해제.</div>
-                            <div className='typing-text3'>{">"} 접속 종료.</div>
-                            <Popup trigger={<button className='button_1'>확인</button>} modal nested>
-                              <div className='backPage_grid_4'>
-                                미래결정완료
-                              </div>
-                            </Popup>
+                            <div className='typing-text1'>{">"} 미참여 확인 완료.</div>
+                            <div className='typing-text2'>{">"} ID : {isIDNumber}</div>
+                            <div className='typing-text3'>{">"} 해당 접속자가 국소장 내에 위치하지 않은 것으로 판단됨.</div>
+                            <div className='typing-text5'>{">"} 프로토콜 AD233 실행 불가.</div>
+                            <div className='typing-text6'>{">"} CONORDEL 액세스 종료.</div>
+                            <div className='typing-text8'>{">"} 대화 채녈 종료.</div>
+                            <div className='typing-text9'>{">"} 연결 해제됨.</div>
+                            <div className='choiceButton1'><button className='console-btn' onClick={() => setStart(5)}> 확인 </button></div>
                           </>
                         }
                       </div>
@@ -1050,7 +1049,7 @@ function App() {
                                 <div>
                                   <div className='PlayerText1'>웃기지도 않네 {'<'}</div>
                                   <div className='typing-text3'>{">"} 장난이라고 생각되면 이 홈페이지를 종료한 후, 평범한</div>
-                                  <div className='typing-text5'>{">"} 일상을 살아가는면 돼. 다만, 미래는 바뀌지 않겠지.</div>
+                                  <div className='typing-text5'>{">"} 일상을 살아가면 돼. 다만, 미래는 바뀌지 않겠지.</div>
                                   <div className='typing-text7'>{">"} 넌 미래에 몸을 빼앗기게 될 거고.</div>
                                   <div className='typing-text9'>==============================================================================================================</div>
                                   <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(1, 3)}>...일단 알겠어.</button></div>
@@ -1239,7 +1238,7 @@ function App() {
                                     <div className='PlayerText1'>나의 미래에 관해서 알고 싶어.{'<'}</div>
                                     <div className='typing-text3'>{">"} 안타깝게도 당사자의 미래를 알려주는 건 금지되어 있어.</div>
                                     <div className='typing-text5'>{">"} 이미 일어난 일은 일어나겠지만 윤리적 문제랑 연관이</div>
-                                    <div className='typing-text7'>{">"} 있어서 말이야. </div>
+                                    <div className='typing-text7'>{">"} 있어서 말이야. 다른 질문?</div>
                                     <div className='typing-text9'>==============================================================================================================</div>
                                     <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button><button className='console-btn3' onClick={() => dialogueHandler(2, 7)}>그럼 왜 하필 여기인거야?</button></div>
                                     <div className='typing-text9'>==============================================================================================================</div>
@@ -1270,7 +1269,7 @@ function App() {
                                   <div className='PlayerText1'>일종의 타임머신인거네?{'<'}</div>
                                   <div className='typing-text1'>{">"} '일종의' 타임머신이지. 사람이 직접 시간여행은 할 수 없어.</div>
                                   <div className='typing-text3'>{">"} 나 같은 인공지능, 사람의 기억과 같은 정보데이터만 시간을 </div>
-                                  <div className='typing-text5'>{">"} 오갈 수 있어. 그래서 내가 너랑 대화할 수 있는 거고. </div>
+                                  <div className='typing-text5'>{">"} 오갈 수 있으니까. 그래서 내가 너랑 대화할 수 있는 거고. </div>
                                   <div className='typing-text9'>==============================================================================================================</div>
                                   <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button><button className='console-btn3' onClick={() => dialogueHandler(2, 7)}>그럼 왜 하필 여기인거야?</button></div>
                                   <div className='typing-text9'>==============================================================================================================</div>
@@ -1278,10 +1277,10 @@ function App() {
                                 }
                                 {isDialogue2 === 7 ? <div>
                                   <div className='PlayerText1'>그럼 왜 하필 여기인거야?{'<'}</div>
-                                  <div className='typing-text1'>{">"} 왜 여기서 미래에서 정보가 넘어오냐는 얘기지? </div>
+                                  <div className='typing-text1'>{">"} 왜 여기가 과거와 미래를 잇는 통로가 됐냐면 </div>
                                   <div className='typing-text3'>{">"} 이 공원이 2075년에 설립될 CONORDEL 통일한국 지부 </div>
-                                  <div className='typing-text5'>{">"} 연구소 중심부거든. I.T.T는 연구시설 반경 5km 이내에만 </div>
-                                  <div className='typing-text7'>{">"} 영향을 끼칠 수 있어. 너는 폭풍 한가운데에 서있는 셈이지. </div>
+                                  <div className='typing-text5'>{">"} 연구소 중심부거든. I.T.T는 연구시설에 전개되는 국소장</div>
+                                  <div className='typing-text7'>{">"} 안에서만 작동돼. 너는 폭풍 한가운데에 서있는 셈이지. </div>
                                   <div className='typing-text9'>==============================================================================================================</div>
                                   <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 8)}>그럼 공원을 나가면 되잖아?</button><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button></div>
                                   <div className='typing-text9'>==============================================================================================================</div>
@@ -1289,10 +1288,10 @@ function App() {
                                 }
                                 {isDialogue2 === 8 ? <div>
                                   <div className='PlayerText1'>그럼 공원을 나가면 되잖아?{'<'}</div>
-                                  <div className='typing-text1'>{">"} 이미 여기 들어온 순간 너의 모든 정보는 미래로 넘어갔어. </div>
-                                  <div className='typing-text3'>{">"} 그리고 프로젝트가 진행됐다는 얘기는 넌 이 장소로 돌아왔 </div>
-                                  <div className='typing-text5'>{">"} 다는 얘기지. 먼 미래에 말이야. 더 이상 자세한 건 </div>
-                                  <div className='typing-text7'>{">"} 말해주기 힘들어. 그렇게 단순한 얘기가 아니야.</div>
+                                  <div className='typing-text1'>{">"} 아니, 그런 단순한 문제가 아니야. 데이터베이스에 너를 </div>
+                                  <div className='typing-text3'>{">"} 대상으로 하는 프로젝트가 이미 존재하고 있어. 그 말인즉 </div>
+                                  <div className='typing-text5'>{">"} 넌 이 장소에 돌아왔다는 얘기지. 먼 미래에 말이야. </div>
+                                  <div className='typing-text7'>{">"} 너가 돌아오지 않았다면 애초에 시작도 안 했을테니까. </div>
                                   <div className='typing-text9'>==============================================================================================================</div>
                                   <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button></div>
                                   <div className='typing-text9'>==============================================================================================================</div>
@@ -1570,13 +1569,13 @@ function App() {
                                             <div className='typing-text3'>{">"} 자, 나무에서 봤던 동물 이름이 하나 있었고.</div>
                                             <div className='typing-text5'>{">"} 책에서 찾았던 글자도 있었지. </div>
                                             <div className='typing-text7'>{">"} 또, 빈칸 채우기에서 찾았던 글자도 있었고,</div>
-                                            <div className='typing-text9'>{">"} 어떤 사람의 명찰에 적혀있었던 글자도 있었어.</div>
+                                            <div className='typing-text9'>{">"} 어떤 사람을 찾아서 발견했던 글자도 있었어.</div>
 
                                             <div className='typing-text11'>==============================================================================================================</div>
                                             <div className='choiceButton2'>
                                               <button className='console-btn3' onClick={() => dialogueHandler(4, 1)}>그냥 알려주면 안돼?</button>
                                               <button className='console-btn3' onClick={() => dialogueHandler(4, 2)}>응, 기억난다.</button></div>
-                                            <div className='typing-text9'>==============================================================================================================</div>
+                                            <div className='typing-text11'>==============================================================================================================</div>
                                           </div>
                                           : ''}
                                         {
@@ -1611,7 +1610,7 @@ function App() {
                                         {isDialogue4 === 3 ?
                                           <div>
                                             <div className='PlayerText1'>흠...노력해볼게.{'<'}</div>
-                                            <div className='typing-text3'>{">"} 그래. 너가 모은 다섯 개의 데이터 조각 중에 입력코드와는</div>
+                                            <div className='typing-text1'>{">"} 그래. 너가 모은 다섯 개의 데이터 조각 중에 입력코드와는</div>
                                             <div className='typing-text3'>{">"} 큰 관련이 없는 데이터가 하나 있었어. 그건 얘기해줄 수 있겠다.</div>
                                             <div className='typing-text5'>{">"} 그 때 답은 이거였어. '대전광역시 유성구 봉명동 1012-3'</div>
                                             <div className='typing-text7'>{">"} 남은 데이터 조각들을 기억해내길 바랄게. 부디 말이야.</div>
@@ -1641,14 +1640,14 @@ function App() {
                                           <div className='typing-textMission4'>WARNING! LIBERA AUTHORIZATION OVERRIDE DETECTED!</div>
                                           <div className='typing-textMission5'>NO OVERIDE CODE FOUND. DEADLOCK DETECTED!</div>
                                           <div className='typing-textMission6'>DEADLOCK Administrator MUST BE ACCESSED.</div>
-
+                                        <div>
                                           <div className='typing-text5'>{">"} 오버라이드 코드가 입력되지 않았습니다..</div>
                                           <div className='typing-text6'>{">"} 교착 상태가 감지되었습니다.</div>
                                           <div className='typing-text7'>{">"} 교착 상태가 감지되었습니다.</div>
                                           <div className='typing-text8'>{">"} 교착 상태가 감지되었습니다.</div>
                                           <div className='typing-text9'>{">"} 교착 상태가 감지되었습니다.</div>
                                           <div className='typing-text10'>{">"} 교착 상태 관리자가 코드를 입력해야합니다.</div>
-
+                                          </div>
 
                                           <div className='typing-text12'>==============================================================================================================</div>
                                           <div className='choiceButton2'><button className='console-btn2' onClick={() => popupSwitch(true)}> 해결 코드 입력 </button></div>
