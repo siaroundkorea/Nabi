@@ -978,10 +978,10 @@ function App() {
                           </>
                         }
                         {
-                            (input.a1 !== "y" || input.a1 !== "Y" || input.a1 !== "n" || input.a1 !== "N") && 
+                            (input.a1 !== "y" || input.a1 !== "Y" || input.a1 !== "n" || input.a1 !== "N") ?
                            <>
                           <div className='typing-text4'>{">"} <input className='input_div' type="text" id="a1" value={input.a1} onChange={handleText} /></div>
-                          </>
+                          </>:''
                        }
                       </div>
                     </div>
