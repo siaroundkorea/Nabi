@@ -1,4 +1,3 @@
-
 import './App.css';
 import './text.css';
 import { useEffect, useState } from 'react';
@@ -144,6 +143,15 @@ function App() {
           window.close()
         }
       }
+      else if (isStart===6){
+        setTime(0)
+        setStart(7)
+      }
+      else if(isStart===7){
+        if(Math.floor((time/1000))===4){
+          window.close()
+        }
+      }
       else {
         if (Math.floor((time / 1000)) === 11) {
 
@@ -151,6 +159,9 @@ function App() {
         }
         if (Math.floor((time / 1000)) === 16) {
           setPhase(1)
+        }
+        if(isStart===-1 && Math.floor((time/1000))===20){
+          window.close()
         }
         // if (Math.floor((time / 1000) % 60) === 15) {
         //   setCheck(true);
@@ -884,9 +895,10 @@ function App() {
                 <div className='backPage_grid_3'>
                   {!isLoading ? <div className='loader4' /> :
                     <>
-                      접속 오류!<br />
                       현재는 접속이 불가능합니다.<br />
                       접속 가능 시간 - 10:00 ~ 16:00<br />
+                      
+                      이 페이지는 10초 뒤에 종료됩니다.<br />
                       {/* Latitude : {location.latitude}<br />
                     Longitude : {location.longitude}<br /> */}
                     </>
@@ -968,12 +980,12 @@ function App() {
                           <>
                             <div className='typing-text1'>{">"} 미참여 확인 완료.</div>
                             <div className='typing-text2'>{">"} ID : {isIDNumber}</div>
-                            <div className='typing-text3'>{">"} 해당 접속자가 국소장 내에 위치하지 않은 것으로 판단됨.</div>
+                            <div className='typing-text3'>{">"} 접속자가 국소장 내에 존재하지 않는다고 판단.</div>
                             <div className='typing-text5'>{">"} 프로토콜 AD233 실행 불가.</div>
                             <div className='typing-text6'>{">"} CONORDEL 액세스 종료.</div>
                             <div className='typing-text8'>{">"} 대화 채녈 종료.</div>
                             <div className='typing-text9'>{">"} 연결 해제됨.</div>
-                            <div className='choiceButton1'><button className='console-btn' onClick={() => setStart(5)}> 확인 </button></div>
+                            <div className='choiceButton1'><button className='console-btn' onClick={() => setStart(6)}> 확인 </button></div>
                           </>
                         }
                        
