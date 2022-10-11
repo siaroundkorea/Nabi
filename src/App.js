@@ -117,12 +117,14 @@ function App() {
 
   useEffect(() => {
     function fetch() {
-      if (isStart === -1) {
-        setTime(0)
-      }
-      else if (isStart === 0) {
+      console.log(time, isStart)
+    if (isStart === 0) {
         if (Math.floor((time / 1000)) === 5) {
+          const date = new Date()
+          if(date.getHours()>9 && date.getHours()<17)
           setStart(1);
+          else
+          setStart(-1)
         }
       }
       else if (isStart === 2) {
@@ -876,7 +878,21 @@ function App() {
 
   return (
     <div className='default'>
-      {isStart === -1 ? <div className='waitingPage' /> :
+      {isStart === -1 ?   
+      <div className='backPage'>
+                <div className='backPage_grid_1'><div className='mainTitle' /></div>
+                <div className='backPage_grid_3'>
+                  {!isLoading ? <div className='loader4' /> :
+                    <>
+                      접속 오류!<br />
+                      현재는 접속이 불가능합니다.<br />
+                      접속 가능 시간 - 10:00 ~ 16:00<br />
+                      {/* Latitude : {location.latitude}<br />
+                    Longitude : {location.longitude}<br /> */}
+                    </>
+                  }
+                </div>
+              </div> :
         isStart === 0 ? <div className='firstPage' /> :
           isStart === 1 ?
             phase === 0 ?
