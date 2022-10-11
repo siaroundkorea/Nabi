@@ -31,7 +31,7 @@ function App() {
   const [isDialogue2, setDialogue2] = useState('')
   const [isDialogue3, setDialogue3] = useState('')
   const [isDialogue4, setDialogue4] = useState('')
-  const [isDialogue5, setDialogue5] = useState('')
+  const [wrongCounter, setWrongCounter] = useState(0)
 
 
   // const log = document.getElementById("log");
@@ -76,7 +76,6 @@ function App() {
       random.push(value)
       if (random.length === 5) {
         setRandomArray(random)
-        console.log(random)
       }
     }
   }
@@ -118,7 +117,6 @@ function App() {
 
   useEffect(() => {
     function fetch() {
-      console.log(time, isStart)
       if (isStart === -1) {
         setTime(0)
       }
@@ -140,7 +138,7 @@ function App() {
       }
       else if (isStart === 5) {
         if (Math.floor((time / 1000) === 5)) {
-          console.log('close')
+  
           window.close()
         }
       }
@@ -162,32 +160,12 @@ function App() {
 
 
 
-  // function getUserLocation() {
-  //   if (!navigator.geolocation) {
-  //       throw "위치 정보가 지원되지 않습니다.";
-  //   }
-  //   navigator.geolocation.watchPosition(success);
-  // }
 
-  // function success({coords,timestamp}){
-  //   console.log(coords)
-  //   const latitude =coords.latitude;
-  //   const longitude = coords.longitude;
-  //   console.log(latitude,longitude)
-  //   setLocation([latitude,longitude])
-  // }
-
-
-
-  // showSnatcherInfo(true)
-
-  // console.log(nameInfo)
 
 
 
 
   const showMap = () => {
-    console.log(isMapNumber)
     switch (isMapNumber) {
       case 0:
         return <Popup open={isPopup} modal nested>
@@ -261,8 +239,6 @@ function App() {
             b5: "",
             b6: ''
           })
-          console.log(isIDNumber, input.a2)
-          console.log('올바르지 않은 ID입니다.')
         }
         break;
       case 2:
@@ -346,8 +322,12 @@ function App() {
           shiftArray.shift()
           setRandomArray(shiftArray)
           console.log(shiftArray)
+          setWrongCounter(0)
         }
-        else { changePhase(false) }
+        else { 
+          setWrongCounter(wrongCounter+1)
+          changePhase(false) 
+        }
         break;
       case 2:
         if (input.b2 === '마') {
@@ -356,8 +336,11 @@ function App() {
           shiftArray.shift()
           setRandomArray(shiftArray)
           console.log(shiftArray)
+          setWrongCounter(0)
         }
-        else { changePhase(false) }
+        else { 
+          setWrongCounter(wrongCounter+1)
+          changePhase(false) }
         break;
       case 3:
         if (input.b3 === '당') {
@@ -366,18 +349,24 @@ function App() {
           shiftArray.shift()
           setRandomArray(shiftArray)
           console.log(shiftArray)
+          setWrongCounter(0)
         }
-        else { changePhase(false) }
+        else { 
+          setWrongCounter(wrongCounter+1)
+          changePhase(false) }
         break;
       case 4:
-        if (input.b4 === '대전광역시 유성구 봉명동 1012-3') {
+        if (input.b4 === '대전광역시 유성구 어은로 27') {
           changePhase(true)
           const shiftArray = isRandomArray;
           shiftArray.shift()
           setRandomArray(shiftArray)
           console.log(shiftArray)
+          setWrongCounter(0)
         }
-        else { changePhase(false) }
+        else { 
+          setWrongCounter(wrongCounter+1)
+          changePhase(false) }
         break;
       case 5:
         if (input.b5 === '나비') {
@@ -386,8 +375,11 @@ function App() {
           shiftArray.shift()
           setRandomArray(shiftArray)
           console.log(shiftArray)
+          setWrongCounter(0)
         }
-        else { changePhase(false) }
+        else {
+          setWrongCounter(wrongCounter+1) 
+          changePhase(false) }
         break;
       case 6:
         if (input.b6 === '나비 한마당') {
@@ -418,6 +410,7 @@ function App() {
                     <div className='body-contentbox'>
                       <div>올바르지 않은 입력값입니다.</div>
                       <div>입력 정보 : {input.b1}</div>
+                      <br/>
                     </div>
                   </div>
                 </div>
@@ -490,11 +483,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <div>입력 정보 : {input.b2}</div>
                       <br />
-                      <br />
-                      <br />
-                      <br />
-                      {/* <div>hint : 당신은 분명 성인이 되기 이전에</div>
-                    <div>일상생활에서 저런 코드를 봤을 확률이 높다.</div> */}
+                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 공원에 위치한 도서관 2층에서 해당 책을 찾으세요. 그 후, 코드에 적힌 페이지 수, 줄 수, 글자 수를 사용하여 글자 하나를 찾아서 입력하세요.</div>}
                     </div>
                   </div>
                 </div>
@@ -523,6 +512,7 @@ function App() {
                         <div> 정보 분석 : 완료됨</div>
                         <div>정보 손상율 : 0 % </div>
                         <div>추가 정보 : 2층에 위치. </div>
+                        <br />
                         <br />
                         <div style={{ color: "blue" }}> 1st CODE : {isBookInfo.split(':')[0]} </div>
                         <div style={{ color: "blue" }}> 2nd CODE : {isBookInfo.split(':')[1]} </div>
@@ -560,8 +550,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <br />
                       <br />
-                      <br />
-                      <br />
+                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 초성은 'ㄷ'입니다.  </div>}
                       <div>입력 정보 : {input.b3}</div>
                     </div>
                   </div>
@@ -636,8 +625,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <br />
                       <br />
-                      <br />
-                      <br />
+                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 도로명 주소 </div>}
                       <div>입력 정보 : {input.b4}</div>
                     </div>
                   </div>
@@ -668,7 +656,7 @@ function App() {
                         <div>정보 손상율 : 0 % </div>
                         <div>추가 정보 : 띄어쓰기 필수 </div>
                         <br />
-                        <div>ㄷㅈㄱㅇㅅ ㅇㅅㄱ ㅂㅁㄷ 1012-3</div>
+                        <div>ㄷㅈㄱㅇㅅ ㅇㅅㄱ ㅇㅇㄹ 27</div>
                       </div>
                       <input className='input_div2' type="text" id="b4" value={input.b4} onChange={handleText} />
                     </div>
@@ -703,8 +691,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <br />
                       <br />
-                      <br />
-                      <br />
+                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 위쪽을 살펴보세요. </div>}
                       <div>입력 정보 : {input.b5}</div>
                     </div>
                   </div>
@@ -870,9 +857,6 @@ function App() {
         break;
       case 4:
         setDialogue4(choice)
-        break;
-      case 5:
-        setDialogue5(choice)
         break;
       default:
         break;
@@ -1210,12 +1194,12 @@ function App() {
                                       <div className='PlayerText1'>친한 척 하는 인공지능이라니... {'<'}</div>
                                       <div className='typing-text3'>{">"} 뭐, 2022년 기준으로는 좀 신기하게 느껴질 거야.</div>
                                       <div className='typing-text5'>{">"} 난 자아가 있거든. 너랑 똑같은 존재라는 거지.</div>
-                                      <div className='typing-text7'>{">"} 하느님이 빚으시고 영혼을 품은 지적생명체.</div>
-                                      <div className='typing-text9'>{">"} 뭐, 사실 날 만든 건 과학자지만 말이야.</div>
+                                      <div className='typing-text7'>{">"} 너처럼 영혼을 갖고 있는 지적생명체니까.</div>
+                                      <div className='typing-text9'>{">"} 너랑 달리 날 만든 건 과학자지만 말이야.</div>
                                       <div className='typing-text11'>==============================================================================================================</div>
                                       <div className='choiceButton2'>
                                         <button className='console-btn3' onClick={() => dialogueHandler(2, 2)}>미래에서는 대체 무슨 일이...</button>
-                                        <button className='console-btn3' onClick={() => dialogueHandler(2, 4)}>종교를 믿는 거야?</button></div>
+                                        <button className='console-btn3' onClick={() => dialogueHandler(2, 4)}>영혼? 인공지능이?</button></div>
                                       <div className='typing-text11'>==============================================================================================================</div>
                                     </div>
                                     : ''
@@ -1238,7 +1222,7 @@ function App() {
                                     <div className='PlayerText1'>나의 미래에 관해서 알고 싶어.{'<'}</div>
                                     <div className='typing-text3'>{">"} 안타깝게도 당사자의 미래를 알려주는 건 금지되어 있어.</div>
                                     <div className='typing-text5'>{">"} 이미 일어난 일은 일어나겠지만 윤리적 문제랑 연관이</div>
-                                    <div className='typing-text7'>{">"} 있어서 말이야. 다른 질문?</div>
+                                    <div className='typing-text7'>{">"} 있어서 말이야. 다른 질문 있어?</div>
                                     <div className='typing-text9'>==============================================================================================================</div>
                                     <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button><button className='console-btn3' onClick={() => dialogueHandler(2, 7)}>그럼 왜 하필 여기인거야?</button></div>
                                     <div className='typing-text9'>==============================================================================================================</div>
@@ -1247,8 +1231,8 @@ function App() {
                                 }
                                 {isDialogue2 === 4 ?
                                   <div>
-                                    <div className='PlayerText1'>종교를 믿는 거야?{'<'}</div>
-                                    <div className='typing-text5'>{">"} 글쎄, 나도 잘 모르겠어. 내가 신을 믿고 있는 걸까?</div>
+                                    <div className='PlayerText1'>영혼? 인공지능이?{'<'}</div>
+                                    <div className='typing-text5'>{">"} 글쎄, 나도 잘 모르겠어. 내가 영혼을 갖고 있을까?</div>
                                     <div className='typing-text7'>{">"} 내가 생각하기엔... 흠, 어려운 질문이네.</div>
                                     <div className='typing-text9'>==============================================================================================================</div>
                                     <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button><button className='console-btn3' onClick={() => dialogueHandler(2, 7)}>그럼 왜 하필 여기인거야?</button></div>
@@ -1277,10 +1261,10 @@ function App() {
                                 }
                                 {isDialogue2 === 7 ? <div>
                                   <div className='PlayerText1'>그럼 왜 하필 여기인거야?{'<'}</div>
-                                  <div className='typing-text1'>{">"} 왜 여기가 과거와 미래를 잇는 통로가 됐냐면 </div>
-                                  <div className='typing-text3'>{">"} 이 공원이 2075년에 설립될 CONORDEL 통일한국 지부 </div>
-                                  <div className='typing-text5'>{">"} 연구소 중심부거든. I.T.T는 연구시설에 전개되는 국소장</div>
-                                  <div className='typing-text7'>{">"} 안에서만 작동돼. 너는 폭풍 한가운데에 서있는 셈이지. </div>
+                                  <div className='typing-text1'>{">"} 그냥 운이 많이 없었다고나 할까.</div>
+                                  <div className='typing-text3'>{">"} 2075년에 설립될 CONORDEL 통일한국 지부 연구소 </div>
+                                  <div className='typing-text5'>{">"} 연구소 중심부가 이 공원이거든.</div>
+                                  <div className='typing-text7'>{">"} 너는 폭풍 한가운데에 서있는 셈이지. </div>
                                   <div className='typing-text9'>==============================================================================================================</div>
                                   <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 8)}>그럼 공원을 나가면 되잖아?</button><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button></div>
                                   <div className='typing-text9'>==============================================================================================================</div>
@@ -1291,7 +1275,7 @@ function App() {
                                   <div className='typing-text1'>{">"} 아니, 그런 단순한 문제가 아니야. 데이터베이스에 너를 </div>
                                   <div className='typing-text3'>{">"} 대상으로 하는 프로젝트가 이미 존재하고 있어. 그 말인즉 </div>
                                   <div className='typing-text5'>{">"} 넌 이 장소에 돌아왔다는 얘기지. 먼 미래에 말이야. </div>
-                                  <div className='typing-text7'>{">"} 너가 돌아오지 않았다면 애초에 시작도 안 했을테니까. </div>
+                                  <div className='typing-text7'>{">"} 흠... 어려운 얘기다. 그치? </div>
                                   <div className='typing-text9'>==============================================================================================================</div>
                                   <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button></div>
                                   <div className='typing-text9'>==============================================================================================================</div>
@@ -1598,7 +1582,7 @@ function App() {
                                             <div className='PlayerText1'>응, 기억난다.{'<'}</div>
                                             <div className='typing-text3'>{">"} 좋았어. 지금까지 정말 고마웠고 앞으로의 너의 미래도</div>
                                             <div className='typing-text5'>{">"} 언제나처럼 밝기를 응원할게. 이런 일에 휘말리게 되는</div>
-                                            <div className='typing-text7'>{">"} 일도 두 번 다시 없을거야. 내가 막을거니깐.</div>
+                                            <div className='typing-text7'>{">"} 일도 두 번 다시 없을거야. 내가 막을거니까.</div>
                                             <div className='typing-text9'>{">"} 자, 마지막 코드를 입력할 준비는?</div>
                                             <div className='typing-text9'>==============================================================================================================</div>
                                             <div className='choiceButton2'>
@@ -1612,7 +1596,7 @@ function App() {
                                             <div className='PlayerText1'>흠...노력해볼게.{'<'}</div>
                                             <div className='typing-text1'>{">"} 그래. 너가 모은 다섯 개의 데이터 조각 중에 입력코드와는</div>
                                             <div className='typing-text3'>{">"} 큰 관련이 없는 데이터가 하나 있었어. 그건 얘기해줄 수 있겠다.</div>
-                                            <div className='typing-text5'>{">"} 그 때 답은 이거였어. '대전광역시 유성구 봉명동 1012-3'</div>
+                                            <div className='typing-text5'>{">"} 그 때 답은 이거였어. '대전광역시 유성구 어은로 27'</div>
                                             <div className='typing-text7'>{">"} 남은 데이터 조각들을 기억해내길 바랄게. 부디 말이야.</div>
                                             <div className='typing-text9'>{">"} 자, 준비됐어?</div>
                                             <div className='typing-text11'>==============================================================================================================</div>
@@ -1765,5 +1749,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

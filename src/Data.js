@@ -30,7 +30,7 @@ const bookInfo =[
     '808 세14ㅁ 172 : p.61-2nd-11th',
     '181.383 커877ㄴ : p.103-1st-10th',
     '372.68 손64ㅇ : p.27-4th-1st',
-    '813.7 박64ㅅ: p.9-21st-5th'
+    '813.7 박64ㅅ: p.9-21th-5th'
 ]
 
 export const getBookInfo = () => {
