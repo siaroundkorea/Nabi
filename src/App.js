@@ -513,6 +513,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <div>입력 정보 : {input.b2}</div>
                       <br />
+                      <div style={{ color: "red" }}>경고 : 정숙 및 책 원위치 필수. </div>
                       {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 공원에 위치한 도서관 2층에서 해당 책을 찾으세요. 그 후, 코드에 적힌 페이지 수, 줄 수, 글자 수를 사용하여 글자 하나를 찾아서 입력하세요.</div>}
                     </div>
                   </div>
@@ -542,7 +543,6 @@ function App() {
                         <div>정보 분석 : 완료됨</div>
                         <div>정보 손상률 : 0 % </div>
                         <div>추가 정보 : 2층에 위치. </div>
-                        <div style={{ color: "red" }}>경고 : 정숙 및 책 원위치 필수. </div>
                         <br />
                         <div style={{ color: "blue" }}> 1st CODE : {isBookInfo.split(':')[0]} </div>
                         <div style={{ color: "blue" }}> 2nd CODE : {isBookInfo.split(':')[1]} </div>
