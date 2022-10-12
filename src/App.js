@@ -104,6 +104,14 @@ function App() {
   // }, [location, cancelLocationWatch]);
 
 
+  function vibrate() {
+    if (navigator.vibrate) {
+        navigator.vibrate(1500); // 진동을 울리게 한다. 1000ms = 1초
+    }
+}
+
+
+
   useEffect(() => {
     let interval;
     interval = setInterval(() => {
@@ -120,7 +128,7 @@ function App() {
     if (isStart === 0) {
         if (Math.floor((time / 1000)) === 5) {
           const date = new Date()
-          if(date.getHours()>9 && date.getHours()<17)
+          if(date.getHours()>9 && date.getHours()<16)
           setStart(1);
           else
           setStart(-1)
@@ -338,6 +346,7 @@ function App() {
           setWrongCounter(0)
         }
         else { 
+          vibrate()
           setWrongCounter(wrongCounter+1)
           changePhase(false) 
         }
@@ -352,6 +361,7 @@ function App() {
           setWrongCounter(0)
         }
         else { 
+          vibrate()
           setWrongCounter(wrongCounter+1)
           changePhase(false) }
         break;
@@ -365,6 +375,7 @@ function App() {
           setWrongCounter(0)
         }
         else { 
+          vibrate()
           setWrongCounter(wrongCounter+1)
           changePhase(false) }
         break;
@@ -378,6 +389,7 @@ function App() {
           setWrongCounter(0)
         }
         else { 
+          vibrate()
           setWrongCounter(wrongCounter+1)
           changePhase(false) }
         break;
@@ -391,6 +403,7 @@ function App() {
           setWrongCounter(0)
         }
         else {
+          vibrate()
           setWrongCounter(wrongCounter+1) 
           changePhase(false) }
         break;
@@ -398,7 +411,11 @@ function App() {
         if (input.b6 === '나비 한마당') {
           changePhase(true)
         }
-        else { changePhase(false) }
+        else { 
+          vibrate()
+          changePhase(false)
+          setWrongCounter(wrongCounter+1) 
+                 }
         break;
     }
   }
@@ -450,20 +467,20 @@ function App() {
                       <div className='body-contentbox'>
                         <div>데이터 ID : #{isIDNumber} - 25(DH1552)</div>
                         <div> 정보 분석 : 완료됨</div>
-                        <div>정보 손상율 : 27 % </div>
+                        <div>정보 손상률 : 27 % </div>
                         <br />
-                        <div> - 이름 : ¹®Š³âµ☐Á Ú±°ø°☐ </div>
+                        <div> - 이름 : ¹®Š³âµÁ®È­ Ú±°ø° </div>
                         <div>- 성별 : ±ºñ®È­ </div>
-                        <div>- 나이 : ☐¢¼Æ® </div>
+                        <div>- 나이 : ¤¢¼Æ® </div>
                         <div>- 특징 : </div>
-                        <div>{'ㅤ>'} 해당 시기 축제에 스태프로 근무중.</div>
-                        <div>{'ㅤ>'} 청바지, 회색 후드집업 착용중.</div>
+                        <div>{'ㅤ>'} 해당 시기에 행사 스태프로 근무중.</div>
+                        <div>{'ㅤ>'} 청바지, 흰색 티셔츠 착용중.</div>
                         <div>{'ㅤ>'} °¢Á¾ ½☐»¡¤ 착용중.</div>
                         <div>{'ㅤ>'} 이름표에 특정 문자가 적혀있음.</div>
                         <div>{'ㅤ>'} 마스크에 나비가 붙어져 있음.</div>
                         <div>{'ㅤ>'} 동편에 위치함.</div>
                       </div>
-                      <input className='input_div2' type="text" id="b1" value={input.b1} onChange={handleText} />
+                      <input className='input_div2' placeholder='한 글자만 입력' type="text" id="b1" value={input.b1} onChange={handleText} />
                     </div>
                   </div>
                   <div className='popup-foot'>
@@ -522,10 +539,10 @@ function App() {
                       <div className='body-titlebox'> 목표 : 다음을 해독하여 정보를 입력</div>
                       <div className='body-contentbox'>
                         <div>데이터 ID : #{isIDNumber} - 31(AC0012)</div>
-                        <div> 정보 분석 : 완료됨</div>
-                        <div>정보 손상율 : 0 % </div>
+                        <div>정보 분석 : 완료됨</div>
+                        <div>정보 손상률 : 0 % </div>
                         <div>추가 정보 : 2층에 위치. </div>
-                        <br />
+                        <div style={{ color: "red" }}>경고 : 정숙 및 책 원위치 필수. </div>
                         <br />
                         <div style={{ color: "blue" }}> 1st CODE : {isBookInfo.split(':')[0]} </div>
                         <div style={{ color: "blue" }}> 2nd CODE : {isBookInfo.split(':')[1]} </div>
@@ -591,21 +608,21 @@ function App() {
                       <div className='body-contentbox'>
                         <div>데이터 ID : #{isIDNumber} - 19(DF3047)</div>
                         <div>정보 분석 : 완료됨</div>
-                        <div>정보 손상율 : 36 % </div>
+                        <div>정보 손상률 : 36 % </div>
                         <br />
                         <div>데이터 손상으로 인해 정보가 손상됨.</div>
-                        <div>손상된 문자열을 비교한 후 다섯개의 네모칸에 들어갈 동일한 한 글자를 입력.</div>
+                        <div>네모 칸에 동일하게 들어갈 글자를 입력.</div>
 
                         <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', marginTop: '10px' }}>
                           <div>
                             <div style={{ display: 'flex' }}> <div className='fillupEmpty'> ㄱ : µ</div>  <div className='fillupEmpty'> ㄴ : ê </div> <div className='fillupEmpty'> ㅅ : È</div><div className='fillupEmpty'> ㅇ : Æ </div> </div>
-                            <div style={{ display: 'flex', marginBottom: "10px" }}> <div className='fillupEmpty'> ㅓ : ö</div><div className='fillupEmpty'> ㅗ : ñ</div> <div className='fillupEmpty'> ㅡ : °¢</div> <div className='fillupEmpty'> ㅣ : °ø</div>  </div>
+                            <div style={{ display: 'flex', marginBottom: "10px" }}> <div className='fillupEmpty'> ㅓ : ö</div><div className='fillupEmpty'> ㅗ : ñ</div> <div className='fillupEmpty'> ㅡ : ¢</div> <div className='fillupEmpty'> ㅣ : ø</div>  </div>
 
                           </div>
-                          <div>ÈöÆ☐, ☐µ°¢ê, ☐구, 황☐, ☐신</div>
+                          <div>ÈöÆ▩, ▩µ¢ê, ▩구, 황▩, ▩신</div>
                         </div>
                       </div>
-                      <input className='input_div2' type="text" id="b3" value={input.b3} onChange={handleText} />
+                      <input className='input_div2' type="text" id="b3" placeholder='한 글자만 입력' value={input.b3} onChange={handleText} />
                     </div>
                   </div>
                   <div className='popup-foot'>
@@ -638,7 +655,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <br />
                       <br />
-                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 도로명 주소 </div>}
+                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 현재 위치의 도로명 주소 </div>}
                       <div>입력 정보 : {input.b4}</div>
                     </div>
                   </div>
@@ -666,12 +683,12 @@ function App() {
                       <div className='body-contentbox'>
                         <div>데이터 ID : #{isIDNumber} - 05(GI9904)</div>
                         <div> 정보 분석 : 완료됨</div>
-                        <div>정보 손상율 : 0 % </div>
+                        <div>정보 손상률 : 0 % </div>
                         <div>추가 정보 : 띄어쓰기 필수 </div>
                         <br />
                         <div>ㄷㅈㄱㅇㅅ ㅇㅅㄱ ㅇㅇㄹ 27</div>
                       </div>
-                      <input className='input_div2' type="text" id="b4" value={input.b4} onChange={handleText} />
+                      <input className='input_div2' placeholder='문장 전체를 입력' type="text" id="b4" value={input.b4} onChange={handleText} />
                     </div>
                   </div>
                   <div className='popup-foot'>
@@ -704,7 +721,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <br />
                       <br />
-                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 위쪽을 살펴보세요. </div>}
+                      {(wrongCounter >1) &&   <div style={{color:'blue'}}>힌트 : 위쪽을 살펴보세요. </div>}
                       <div>입력 정보 : {input.b5}</div>
                     </div>
                   </div>
@@ -736,12 +753,13 @@ function App() {
                         <div className='body-contentbox'>
                           <div>데이터 ID : #{isIDNumber} - 31(CG3507)</div>
                           <div> 정보 분석 : 완료됨</div>
-                          <div>정보 손상율 : 0 % </div>
-                          <br />
+                          <div>정보 손상률 : 0 % </div>
                           <div>해당 위치에 있는 리본을 찾고 그 리본에 달려있는 게 무엇인지 입력하시오.</div>
+                          <div style={{ color: "red" }}>경고 : 설치물 훼손 금지 </div>
+                          <br />
                           <button className='console-btn3' onClick={() => setMap(true)}> 지도 확인 </button>
                         </div>
-                        <input className='input_div2' type="text" id="b5" value={input.b5} onChange={handleText} />
+                        <input className='input_div2' placeholder='여기에 입력.' type="text" id="b5" value={input.b5} onChange={handleText} />
                       </div>
                     </div>
                     <div className='popup-foot'>
@@ -777,9 +795,10 @@ function App() {
                 <div className='body-titlebox'> Error Code 0002 : 교착 해결 코드 불일치.</div>
                 <div className='body-contentbox'>
                   <div className='fillUpText'>3회 입력 실패 시, 접근이 제한됩니다.</div>
+                  <br />
                   <div className='lineThroughText'>3회 입력 실패는 무시해. 내가 접근 제한 안되게 막아놨어.</div>
-                  <br />
-                  <br />
+                  {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 지금 진행되고 있는 행사의 이름 </div>}
+
                   <div>입력 정보 : {input.b6}</div>
                 </div>
               </div>
@@ -812,7 +831,7 @@ function App() {
                     <div className='body-contentbox'>
                       <div> ID {isIDNumber} Data will be controlled by 'Libera' </div>
                       <div> 'Libera' will be fully access to ReCon Project(ID {isIDNumber}) </div>
-                      <br />
+                      <div> 지금까지 입력한 답들을 조합하여 코드를 입력. </div>
                       <div> 입력 형태 : ☐☐ ☐☐☐ (다섯 글자) </div>
                     </div>
                     <input className='input_div2' type="text" id="b6" value={input.b6} onChange={handleText} />
@@ -848,11 +867,10 @@ function App() {
 
   const popupSwitch = (enable) => {
     if (enable) {
-      console.log(isPopup)
+      vibrate()
       setPopup(true)
     }
     else {
-      console.log(isPopup)
       setPopup(false)
     }
   }
@@ -895,12 +913,11 @@ function App() {
                 <div className='backPage_grid_3'>
                   {!isLoading ? <div className='loader4' /> :
                     <>
+                      접속 오류!<br />
                       현재는 접속이 불가능합니다.<br />
                       접속 가능 시간 - 10:00 ~ 16:00<br />
                       
                       이 페이지는 10초 뒤에 종료됩니다.<br />
-                      {/* Latitude : {location.latitude}<br />
-                    Longitude : {location.longitude}<br /> */}
                     </>
                   }
                 </div>
@@ -917,8 +934,6 @@ function App() {
                       ID:{isIDNumber}<br />
                       keyValue:{isIDString}<br />
                       AccessPoint : 192.0.68.24<br />
-                      {/* Latitude : {location.latitude}<br />
-                    Longitude : {location.longitude}<br /> */}
                     </>
                   }
                 </div>
@@ -1001,7 +1016,7 @@ function App() {
                       </div>
                       <div className='backPage_grid_4'>
                         <div>
-                          CONORDEL_CONSOL(ADMIN) : <br />
+                          CONORDEL_CONSOLE(ADMIN) : <br />
                           Last Login - 2085 Mar 05 15:26:25 on console<br />
                           Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1026,7 +1041,7 @@ function App() {
                         </div>
                         <div className='backPage_grid_4'>
                           <div>
-                            CONORDEL_CONSOL(ADMIN) : <br />
+                            CONORDEL_CONSOLE(ADMIN) : <br />
                             Last Login - 2105 Mar 05 15:26:25 on console<br />
                             Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1159,7 +1174,7 @@ function App() {
                           </div>
                           <div className='backPage_grid_4'>
                             <div>
-                              CONORDEL_CONSOL(ADMIN) : <br />
+                              CONORDEL_CONSOLE(ADMIN) : <br />
                               Last Login - 2105 Mar 05 15:26:25 on console<br />
                               Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1183,7 +1198,7 @@ function App() {
                             </div>
                             <div className='backPage_grid_4'>
                               <div>
-                                CONORDEL_CONSOL(ADMIN) : <br />
+                                CONORDEL_CONSOLE(ADMIN) : <br />
                                 Last Login - 2105 Mar 05 15:26:25 on console<br />
                                 Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1290,8 +1305,8 @@ function App() {
                                 {isDialogue2 === 7 ? <div>
                                   <div className='PlayerText1'>그럼 왜 하필 여기인거야?{'<'}</div>
                                   <div className='typing-text1'>{">"} 그냥 운이 많이 없었다고나 할까.</div>
-                                  <div className='typing-text3'>{">"} 2075년에 설립될 CONORDEL 통일한국 지부 연구소 </div>
-                                  <div className='typing-text5'>{">"} 연구소 중심부가 이 공원이거든.</div>
+                                  <div className='typing-text3'>{">"} 2075년에 설립될 CONORDEL 연구소 통일한국 지부가 </div>
+                                  <div className='typing-text5'>{">"} 이 공원이거든. 그래서 이 공원이 선택된거야.</div>
                                   <div className='typing-text7'>{">"} 너는 폭풍 한가운데에 서있는 셈이지. </div>
                                   <div className='typing-text9'>==============================================================================================================</div>
                                   <div className='choiceButton1'><button className='console-btn3' onClick={() => dialogueHandler(2, 8)}>그럼 공원을 나가면 되잖아?</button><button className='console-btn3' onClick={() => dialogueHandler(2, 5)}>...</button></div>
@@ -1321,7 +1336,7 @@ function App() {
                               </div>
                               <div className='backPage_grid_4'>
                                 <div>
-                                  CONORDEL_CONSOL(ADMIN) : <br />
+                                  CONORDEL_CONSOLE(ADMIN) : <br />
                                   Last Login - 2105 Mar 05 15:26:25 on console<br />
                                   Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1348,7 +1363,7 @@ function App() {
                                 </div>
                                 <div className='backPage_grid_4'>
                                   <div>
-                                    CONORDEL_CONSOL(ADMIN) : <br />
+                                    CONORDEL_CONSOLE(ADMIN) : <br />
                                     Last Login - 2105 Mar 05 15:26:25 on console<br />
                                     Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1378,7 +1393,7 @@ function App() {
                                 </div>
                                 <div className='backPage_grid_4'>
                                   <div>
-                                    CONORDEL_CONSOL(ADMIN) : <br />
+                                    CONORDEL_CONSOLE(ADMIN) : <br />
                                     Last Login - 2105 Mar 05 15:26:25 on console<br />
                                     Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1463,7 +1478,7 @@ function App() {
                                         <div className='PlayerText1'>널 믿어도 될라나?{'<'}</div>
                                         <div className='typing-text1'>{">"} 오, 의심하는 거야? 의심이라는 감정은 위험한 일을</div>
                                         <div className='typing-text3'>{">"} 피하고 신중한 생각을 하게 도와주기도 하지만 그게</div>
-                                        <div className='typing-text5'>{">"} 심해지면 눈 앞에 있는 것도 보지 못하게 되지.</div>
+                                        <div className='typing-text5'>{">"} 심해지면 눈 앞에 있는 것도 보지 못하게 만들지.</div>
                                         <div className='typing-text7'>{">"} 선택은 너의 몫이야. 다만 기억해 둬.</div>
                                         <div className='typing-text9'>{">"} 난 너의 미래를 위해 여기까지 왔어.</div>
                                         <div className='typing-text11'>==============================================================================================================</div>
@@ -1520,7 +1535,7 @@ function App() {
                                   </div>
                                   <div className='backPage_grid_4'>
                                     <div>
-                                      CONORDEL_CONSOL(ADMIN) : <br />
+                                      CONORDEL_CONSOLE(ADMIN) : <br />
                                       Last Login - 2105 Mar 05 15:26:25 on console<br />
                                       Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1549,7 +1564,7 @@ function App() {
                                     </div>
                                     <div className='backPage_grid_4'>
                                       <div>
-                                        CONORDEL_CONSOL(ADMIN) : <br />
+                                        CONORDEL_CONSOLE(ADMIN) : <br />
                                         Last Login - 2105 Mar 05 15:26:25 on console<br />
                                         Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
 
@@ -1578,7 +1593,7 @@ function App() {
                                         {isDialogue4 === 0 ?
                                           <div>
                                             <div className='PlayerText1'>까먹은 거...같은데{'<'}</div>
-                                            <div className='typing-text3'>{">"} 자, 나무에서 봤던 동물 이름이 하나 있었고.</div>
+                                            <div className='typing-text3'>{">"} 자, 리본에 달려있던 것도 하나 있었고.</div>
                                             <div className='typing-text5'>{">"} 책에서 찾았던 글자도 있었지. </div>
                                             <div className='typing-text7'>{">"} 또, 빈칸 채우기에서 찾았던 글자도 있었고,</div>
                                             <div className='typing-text9'>{">"} 어떤 사람을 찾아서 발견했던 글자도 있었어.</div>
@@ -1646,7 +1661,7 @@ function App() {
                                       </div>
                                       <div className='backPage_grid_4'>
                                         <div>
-                                          CONORDEL_CONSOL(ADMIN) : <br />
+                                          CONORDEL_CONSOLE(ADMIN) : <br />
                                           Last Login - 2105 Mar 05 15:26:25 on console<br />
                                           Auth : ID {isIDNumber} (Authentication_SKIPPED)<br />
                                           <div className='typing-textMission4'>WARNING! LIBERA AUTHORIZATION OVERRIDE DETECTED!</div>

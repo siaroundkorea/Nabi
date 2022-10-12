@@ -32,7 +32,7 @@
   background-repeat: no-repeat;
   -webkit-animation: flicker-out-1 2s linear both;
 	        animation: flicker-out-1 2s linear both;
-          animation-delay: 3s;
+          animation-delay: 2s;
 }
 
 .secondPage{
@@ -66,13 +66,6 @@
           animation-delay: 10s;
 }
 
-.waitingPage{
-  background-image: url('./Img/404_errorpage.png');
-  width:80%;
-  height:45%;
-  background-size:100% 100%;
-  background-repeat: no-repeat;
-}
 
  @-webkit-keyframes flicker-out-1 {
   0% {

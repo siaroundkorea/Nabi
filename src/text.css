@@ -7,10 +7,10 @@
   }
 
   .input_div2{
-    height:fit-content;
+    height: 20px;
     width: 95%;
     cursor: text;
-    font:'main';
+    font-size:12px;
     margin-top: 4%;
   }
 
