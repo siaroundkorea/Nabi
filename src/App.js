@@ -474,7 +474,7 @@ function App() {
                         <div>- 나이 : ¤¢¼Æ® </div>
                         <div>- 특징 : </div>
                         <div>{'ㅤ>'} 해당 시기에 행사 스태프로 근무중.</div>
-                        <div>{'ㅤ>'} 청바지, 흰색 티셔츠 착용중.</div>
+                        <div>{'ㅤ>'} 청바지, 흰색 상의 착용중.</div>
                         <div>{'ㅤ>'} °¢Á¾ ½☐»¡¤ 착용중.</div>
                         <div>{'ㅤ>'} 이름표에 특정 문자가 적혀있음.</div>
                         <div>{'ㅤ>'} 마스크에 나비가 붙어져 있음.</div>
@@ -1668,17 +1668,16 @@ function App() {
                                           <div className='typing-textMission5'>NO OVERIDE CODE FOUND. DEADLOCK DETECTED!</div>
                                           <div className='typing-textMission6'>DEADLOCK Administrator MUST BE ACCESSED.</div>
                                           <div>
-                                            <div className='typing-text5'>{">"} 오버라이드 코드가 입력되지 않았습니다..</div>
+                                            <div className='typing-text5'>{">"} 오버라이드 코드가 입력되지 않았습니다.</div>
                                             <div className='typing-text6'>{">"} 교착 상태가 감지되었습니다.</div>
                                             <div className='typing-text7'>{">"} 교착 상태가 감지되었습니다.</div>
                                             <div className='typing-text8'>{">"} 교착 상태가 감지되었습니다.</div>
                                             <div className='typing-text9'>{">"} 교착 상태가 감지되었습니다.</div>
                                             <div className='typing-text10'>{">"} 교착 상태 관리자가 코드를 입력해야합니다.</div>
-                                          </div>
-
-                                          <div className='typing-text12'>==============================================================================================================</div>
+                                            <div className='typing-text12'>==============================================================================================================</div>
                                           <div className='choiceButton2'><button className='console-btn2' onClick={() => popupSwitch(true)}> 해결 코드 입력 </button></div>
                                           <div className='typing-text12'>==============================================================================================================</div>
+                                          </div>
                                           {popup()}
                                         </div>
                                       </div>
