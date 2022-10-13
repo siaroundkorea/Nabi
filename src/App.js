@@ -514,7 +514,7 @@ function App() {
                       <div>입력 정보 : {input.b2}</div>
                       <br />
                       <div style={{ color: "red" }}>경고 : 정숙 및 책 원위치 필수. </div>
-                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 공원에 위치한 도서관 2층에서 해당 책을 찾으세요. 그 후, 코드에 적힌 페이지 수, 줄 수, 글자 수를 사용하여 글자 하나를 찾아서 입력하세요.</div>}
+                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 도서관에서 책의 페이지 수, 줄 수, 글자 수를 사용하여 글자 하나를 찾아서 입력.</div>}
                     </div>
                   </div>
                 </div>
@@ -655,7 +655,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <br />
                       <br />
-                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 현재 위치의 도로명 주소 </div>}
+                      {(wrongCounter >2) &&   <div style={{color:'blue'}}>힌트 : 도로명 주소 </div>}
                       <div>입력 정보 : {input.b4}</div>
                     </div>
                   </div>
@@ -721,7 +721,7 @@ function App() {
                       <div>올바르지 않은 입력값입니다.</div>
                       <br />
                       <br />
-                      {(wrongCounter >1) &&   <div style={{color:'blue'}}>힌트 : 위쪽을 살펴보세요. </div>}
+                      {(wrongCounter >1) &&   <div style={{color:'blue'}}>힌트 : 위쪽을 샅샅이 살펴보세요. </div>}
                       <div>입력 정보 : {input.b5}</div>
                     </div>
                   </div>
@@ -754,7 +754,7 @@ function App() {
                           <div>데이터 ID : #{isIDNumber} - 31(CG3507)</div>
                           <div> 정보 분석 : 완료됨</div>
                           <div>정보 손상률 : 0 % </div>
-                          <div>해당 위치에 있는 리본을 찾고 그 리본에 달려있는 게 무엇인지 입력하시오.</div>
+                          <div>해당 위치에 있는 리본을 찾고 그 리본에 달려있는 것이 무엇인지 입력.</div>
                           <div style={{ color: "red" }}>경고 : 설치물 훼손 금지 </div>
                           <br />
                           <button className='console-btn3' onClick={() => setMap(true)}> 지도 확인 </button>
@@ -832,7 +832,7 @@ function App() {
                       <div> ID {isIDNumber} Data will be controlled by 'Libera' </div>
                       <div> 'Libera' will be fully access to ReCon Project(ID {isIDNumber}) </div>
                       <div> 지금까지 입력한 답들을 조합하여 코드를 입력. </div>
-                      <div> 입력 형태 : ☐☐ ☐☐☐ (다섯 글자) </div>
+                      <div> 입력 형태 : ▩▩ ▩▩▩ (다섯 글자) </div>
                     </div>
                     <input className='input_div2' type="text" id="b6" value={input.b6} onChange={handleText} />
                   </div>
