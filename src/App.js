@@ -913,10 +913,9 @@ function App() {
                 <div className='backPage_grid_3'>
                   {!isLoading ? <div className='loader4' /> :
                     <>
-                      접속 오류!<br />
-                      현재는 접속이 불가능합니다.<br />
-                      접속 가능 시간 - 10:00 ~ 16:00<br />
-                      
+                      프로토콜 오류!<br />
+                      코노델 접속이 차단되었습니다. <br />
+                      접속 차단일 : 2022년 10월 14일 <br />  
                       이 페이지는 10초 뒤에 종료됩니다.<br />
                     </>
                   }
