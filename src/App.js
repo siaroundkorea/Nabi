@@ -128,7 +128,7 @@ function App() {
     if (isStart === 0) {
         if (Math.floor((time / 1000)) === 5) {
           const date = new Date()
-          if(date.getHours()>9 && date.getHours()<16)
+          if(date.getTime()<10)
           setStart(1);
           else
           setStart(-1)
