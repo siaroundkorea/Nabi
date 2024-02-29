@@ -16,7 +16,7 @@ UI/UX Design / AROUND Action Team
 
 ### `기능`
 
-- ConOrDel Alpha
+- ConOrDel Alpha
 
 1. 지도 미션 (랜덤)
 2. 도서관 (랜덤)
