@@ -1,8 +1,8 @@
 # 2022 유성구 나비한마당 이벤트 게임 페이지 
-
+# ConOrDel ver.alpha
 - 2022 유성구 나비한마당 이벤트 게임 페이지
 - ConOrDel 전신
-- ConOrDel ver.alpha
+
 
 This project is ConOrDel made by AROUNDKorea SI team
 
