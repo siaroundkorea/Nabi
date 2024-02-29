@@ -4,7 +4,7 @@
 - ConOrDel 전신
 - ConOrDel ver.alpha
 
-This project is ConOrDel made by AROUNDKorea SI team
+This project is ConOrDel made by AROUNDKorea SI team
 
 This project is COPYRIGHTⓒ2022 by AROUNDKorea Corp. ALL RIGHTS RESERVED
 
