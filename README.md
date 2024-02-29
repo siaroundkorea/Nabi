@@ -1,13 +1,6 @@
 # 2022 유성구 나비한마당 이벤트 게임 페이지 
-# ConOrDel ver.alpha
-- 2022 유성구 나비한마당 이벤트 게임 페이지
-- ConOrDel 전신
-
 
 This project is ConOrDel made by AROUNDKorea SI team
-
-[ 확정 미션 ]
-
 
 ## AROUND SI team & Action team
 
@@ -22,6 +15,8 @@ UI/UX Design / AROUND Action Team
 `#즐거움 #호기심 #사림 #새로움 #깔끔함 #아름다움 - 사람에 가치를 더하다.` 
 
 ### `기능`
+
+- ConOrDel 전신
 
 1. 지도 미션 (랜덤)
 2. 도서관 (랜덤)
