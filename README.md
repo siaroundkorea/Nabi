@@ -64,7 +64,7 @@ UI/UX Design : UIPixie
 5. 22 / 10 / 12 ver.1.1.3
     1. ver.Beta
 6. 22 / 10 / 12 ver.1.1.4
-    1. ver.Beta 버그수정
+    1. ver.Beta 버그수정
 7. 22 / 10 / 13 ver.1.1.5
     1. ver.Beta 버그수정
 8. 22 / 10 / 14 ver.1.1.6
